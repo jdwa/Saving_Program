@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="categoryDao" class="com.ldcgroup.dao.CategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="categoryBo" class="com.ldcgroup.bo.CategoryBoImpl">
+		<property name="categoryDao" ref="categoryDao" />
+	</bean>	
+
+	<bean id="companyDao" class="com.ldcgroup.dao.CompanyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="companyBo" class="com.ldcgroup.bo.CompanyBoImpl">
+		<property name="companyDao" ref="companyDao" />
+	</bean>
+	
+	<bean id="memberDao" class="com.ldcgroup.dao.MemberDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="memberBo" class="com.ldcgroup.bo.MemberBoImpl">
+		<property name="memberDao" ref="memberDao" />
+	</bean>
+
+	<bean id="rateDao" class="com.ldcgroup.dao.RateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rateBo" class="com.ldcgroup.bo.RateBoImpl">
+		<property name="rateDao" ref="rateDao" />
+	</bean>
+
+	<bean id="roleDao" class="com.ldcgroup.dao.RoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="roleBo" class="com.ldcgroup.bo.RoleBoImpl">
+		<property name="roleDao" ref="roleDao" />
+	</bean>
+	
+	<bean id="statementDao" class="com.ldcgroup.dao.StatementDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="statementBo" class="com.ldcgroup.bo.StatementBoImpl">
+		<property name="statementDao" ref="statementDao" />
+	</bean>
+	
+	<bean id="typeDao" class="com.ldcgroup.dao.TypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="typeBo" class="com.ldcgroup.bo.TypeBoImpl">
+		<property name="typeDao" ref="typeDao" />
+	</bean>
+	
+	<bean id="tradeDao" class="com.ldcgroup.dao.TradeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tradeBo" class="com.ldcgroup.bo.TradeBoImpl">
+		<property name="tradeDao" ref="tradeDao" />
+	</bean>
+	
+	<bean id="transactionServiceBo" class="com.ldcgroup.bo.TransactionServiceBoImpl">
+		<property name="memberBo" ref="memberBo" />
+		<property name="statementBo" ref="statementBo" />
+		<property name="tradeBo" ref="tradeBo" />
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/config/config.properties</value>
+		</property>
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
+	<bean id="propertyBean" class="com.ldcgroup.util.PropertyBean">
+		<property name="seniority">
+			<value>${minimum.seniority.years}</value>
+		</property>
+	</bean>
+ 
+</beans>

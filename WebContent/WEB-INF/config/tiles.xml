@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/pages/template/baseLayout.jsp">
+      <put-attribute name="title" value="Saving Program"/>
+      <put-attribute name="header" value="/pages/template/header.jsp"/>
+      <put-attribute name="menu" value="/pages/template/menu.jsp"/>
+      <put-attribute name="body" value="/pages/template/body.jsp"/>
+      <put-attribute name="footer" value="/pages/template/footer.jsp"/>
+  </definition>
+  <definition name="pages.index.tiles" extends="baseLayout">      
+      <put-attribute name="body" value="/pages/index.jsp"/>      
+  </definition>
+  <definition name="pages.action.initializeData.tiles" extends="baseLayout">
+      <put-attribute name="body" value="/pages/action/initializeData.jsp"/>      
+  </definition>
+  <definition name="pages.action.loginMember.tiles" extends="baseLayout">     
+      <put-attribute name="body" value="/pages/action/loginMember.jsp"/>      
+  </definition>  
+  <definition name="pages.action.changeMemberPassword.tiles" extends="baseLayout">
+      <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/changeMemberPassword.jsp"/>      
+  </definition>
+  <definition name="pages.action.showMemberControl.tiles" extends="baseLayout">
+      <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>            
+  </definition>  
+  <definition name="pages.action.showMemberStatementList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showMemberStatementList.jsp"/>      
+  </definition> 
+  <definition name="pages.action.showMemberStatementGrid.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showMemberStatementGrid.jsp"/>      
+  </definition> 
+  <definition name="pages.action.showTradeStatementList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showTradeStatementList.jsp"/>      
+  </definition>
+   <definition name="pages.action.showTradeStatementGrid.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showTradeStatementGrid.jsp"/>      
+  </definition>
+  <definition name="pages.action.queryTrade.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/queryTrade.jsp"/>      
+  </definition>
+  <definition name="pages.action.invalidateTrade.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/invalidateTrade.jsp"/>      
+  </definition>
+  <definition name="pages.action.queryMember.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/queryMember.jsp"/>      
+  </definition>  
+  
+  <!-- Trade Actions -->
+  <definition name="pages.action.addTrade001.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade001.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade002.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade002.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade003.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade003.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade004.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade004.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade101.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade101.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade102.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade102.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade103.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade103.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade104.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade104.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade105.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade105.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade106.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade106.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade107.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade107.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade201.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade201.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade202.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade202.jsp"/>      
+  </definition>
+  
+  <!-- Member -->
+  <definition name="pages.common.addMember.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addMember.jsp"/>      
+  </definition>
+  <definition name="pages.common.showMember.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showMember.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailMember.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailMember.jsp"/>      
+  </definition>
+
+  <!-- Category -->
+  <definition name="pages.common.addCategory.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addCategory.jsp"/>      
+  </definition>
+  <definition name="pages.common.showCategory.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showCategory.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailCategory.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailCategory.jsp"/>      
+  </definition>
+    
+  <!-- Company -->
+  <definition name="pages.common.addCompany.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addCompany.jsp"/>      
+  </definition>
+  <definition name="pages.common.showCompany.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showCompany.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailCompany.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailCompany.jsp"/>      
+  </definition>
+  
+  <!-- Rate -->
+  <definition name="pages.common.addRate.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addRate.jsp"/>      
+  </definition>
+  <definition name="pages.common.showRate.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showRate.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailRate.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailRate.jsp"/>      
+  </definition>
+
+  <!-- Role -->
+  <definition name="pages.common.addRole.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addRole.jsp"/>      
+  </definition>
+  <definition name="pages.common.showRole.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showRole.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailRole.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailRole.jsp"/>      
+  </definition>
+  
+  <!-- Statement -->
+  <definition name="pages.common.addStatement.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addStatement.jsp"/>      
+  </definition>
+  <definition name="pages.common.showStatement.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showStatement.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailStatement.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailStatement.jsp"/>      
+  </definition>
+
+  <!-- Type -->
+  <definition name="pages.common.addType.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addType.jsp"/>      
+  </definition>
+  <definition name="pages.common.showType.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showType.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailType.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailType.jsp"/>      
+  </definition>
+  
+  <!-- Trade -->
+  <definition name="pages.common.addTrade.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addTrade.jsp"/>      
+  </definition>
+  <definition name="pages.common.showTrade.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showTrade.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailTrade.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailTrade.jsp"/>      
+  </definition>
+  
+</tiles-definitions>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/7/15 ?U?? 04:05:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ldcgroup.model.Trade" table="TRADE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="tx_no" type="java.lang.String">
+            <column name="TX_NO" unique="true" not-null="true" />
+        </property>
+        <property name="fund" type="java.lang.Double">
+            <column name="FUND" not-null="true" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <property name="settlement_date" type="java.util.Date">
+            <column name="SETTLEMENT_DATE" not-null="true" />
+        </property>        
+        <property name="creation_date" type="java.util.Date">
+            <column name="CREATION_DATE" not-null="true" />
+        </property>
+        <property name="timestamp" type="java.lang.String">
+            <column name="TIMESTAMP" not-null="true" />
+        </property>
+        <property name="valid" type="java.lang.Boolean">
+            <column name="VALID" not-null="true" />
+        </property>
+        <many-to-one name="company" class="com.ldcgroup.model.Company" fetch="join" lazy="false">
+            <column name="COMPANY" not-null="true" />
+        </many-to-one>
+        <many-to-one name="category" class="com.ldcgroup.model.Category" fetch="join" lazy="false">
+            <column name="CATEGORY" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

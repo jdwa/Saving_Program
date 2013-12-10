@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+ "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+	<package name="default" namespace="/" extends="struts-default,json-default">
+	
+			<result-types>
+				<result-type name="tiles"
+					class="org.apache.struts2.views.tiles.TilesResult" />
+			</result-types>
+			
+			<interceptors>
+				<interceptor class="com.ldcgroup.interceptor.ActionInterceptor" name="actionInterceptor" />
+				<interceptor-stack name="actionStack">
+					<interceptor-ref name="defaultStack" />
+					<interceptor-ref name="actionInterceptor" />
+				</interceptor-stack>
+			</interceptors>
+	
+			<default-interceptor-ref name="actionStack" />
+
+			<global-results>
+				<result name="login">/pages/index.jsp</result>
+				<result name="error">/pages/error.jsp</result>
+				<result name="none">/pages/error.jsp</result>
+			</global-results>
+
+			<!-- Actions -->
+			<action name="initializeChangeMemberPassword" class="com.ldcgroup.action.MemberPasswordChangeAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.action.changeMemberPassword.tiles</result>
+			</action>			
+			<action name="changeMemberPassword" class="com.ldcgroup.action.MemberPasswordChangeAction">
+				<result name="input" type="tiles">pages.action.changeMemberPassword.tiles</result>
+				<result name="success" type="tiles">pages.action.loginMember.tiles</result>
+				<result name="error" type="tiles">pages.action.changeMemberPassword.tiles</result>
+			</action>
+			<action name="initializeLoginMember" class="com.ldcgroup.action.MemberLoginAction"
+				method="initialize">
+				<result name="success" type="tiles">pages/action/loginMember.jsp</result>
+			</action>
+			<action name="loginMember" class="com.ldcgroup.action.MemberLoginAction">
+				<result name="initialize" type="tiles">pages.action.initializeData.tiles</result>
+				<result name="input" type="tiles">pages.action.loginMember.tiles</result>
+				<result name="success" type="tiles">pages.action.showMemberControl.tiles</result>
+			</action>
+			<action name="logoutMember" class="com.ldcgroup.action.MemberLogoutAction">
+				<result name="success">/pages/index.jsp</result>
+			</action>
+			<action name="initializeData" class="com.ldcgroup.action.DataInitializeAction">
+				<result name="input" type="tiles">pages.action.initializeData.tiles</result>
+				<result name="success" type="tiles">pages.action.loginMember.tiles</result>
+			</action>
+			<action name="listMemberStatement" class="com.ldcgroup.action.MemberStatementListAction">
+				<result name="success" type="tiles">pages.action.showMemberStatementList.tiles</result>
+			</action>
+			<action name="listMemberStatementGrid" class="com.ldcgroup.action.MemberStatementGridAction">
+				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			</action>
+			<action name="gridMemberStatement" class="com.ldcgroup.action.MemberStatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridMember" class="com.ldcgroup.action.MemberGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						memberList\[\d+\]\.id,
+						memberList\[\d+\]\.account,
+						memberList\[\d+\]\.active,
+						memberList\[\d+\]\.accumulation,
+						memberList\[\d+\]\.company\.cmp_description,
+						memberList\[\d+\]\.role\.role_description,
+						memberList\[\d+\]\.creation_date,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="subgridMemberStatement" class="com.ldcgroup.action.MemberSubgridStatementAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType001Statement" class="com.ldcgroup.action.Type001StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType002Statement" class="com.ldcgroup.action.Type002StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType003Statement" class="com.ldcgroup.action.Type003StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType004Statement" class="com.ldcgroup.action.Type004StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType005Statement" class="com.ldcgroup.action.Type005StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="initializeQueryTrade" class="com.ldcgroup.action.TradeActionQuery"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.queryTrade.tiles</result>
+			</action>
+			<action name="queryTrade" class="com.ldcgroup.action.TradeActionQuery">
+				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>	
+			<action name="initializeInvalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.invalidateTrade.tiles</result>
+			</action>
+			<action name="invalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate">
+				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>			
+			<action name="initializeQueryMember" class="com.ldcgroup.action.MemberQueryAction"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryMember.tiles</result>
+				<result name="success" type="tiles">pages.action.queryMember.tiles</result>
+			</action>
+			<action name="queryMember" class="com.ldcgroup.action.MemberQueryAction">
+				<result name="input" type="tiles">pages.action.queryMember.tiles</result>
+				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			</action>							
+						
+			<!-- Trade Actions -->
+			<action name="initializeTrade001" class="com.ldcgroup.action.TradeAction001"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade001.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade001.tiles</result>
+			</action>
+			<action name="addTrade001" class="com.ldcgroup.action.TradeAction001">
+				<result name="input" type="tiles">pages.action.addTrade001.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade002" class="com.ldcgroup.action.TradeAction002"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade002.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade002.tiles</result>
+			</action>
+			<action name="addTrade002" class="com.ldcgroup.action.TradeAction002">
+				<result name="input" type="tiles">pages.action.addTrade002.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade003" class="com.ldcgroup.action.TradeAction003"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade003.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade003.tiles</result>
+			</action>
+			<action name="addTrade003" class="com.ldcgroup.action.TradeAction003">
+				<result name="input" type="tiles">pages.action.addTrade003.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade004" class="com.ldcgroup.action.TradeAction004"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade004.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade004.tiles</result>
+			</action>
+			<action name="addTrade004" class="com.ldcgroup.action.TradeAction004">
+				<result name="input" type="tiles">pages.action.addTrade004.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade101" class="com.ldcgroup.action.TradeAction101"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade101.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade101.tiles</result>
+			</action>
+			<action name="addTrade101" class="com.ldcgroup.action.TradeAction101">
+				<result name="input" type="tiles">pages.action.addTrade101.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade102" class="com.ldcgroup.action.TradeAction102"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade102.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade102.tiles</result>
+			</action>
+			<action name="addTrade102" class="com.ldcgroup.action.TradeAction102">
+				<result name="input" type="tiles">pages.action.addTrade102.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade103" class="com.ldcgroup.action.TradeAction103"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade103.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade103.tiles</result>
+			</action>
+			<action name="addTrade103" class="com.ldcgroup.action.TradeAction103">
+				<result name="input" type="tiles">pages.action.addTrade103.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade104" class="com.ldcgroup.action.TradeAction104"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade104.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade104.tiles</result>
+			</action>
+			<action name="addTrade104" class="com.ldcgroup.action.TradeAction104">
+				<result name="input" type="tiles">pages.action.addTrade104.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade105" class="com.ldcgroup.action.TradeAction105"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade105.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade105.tiles</result>
+			</action>
+			<action name="addTrade105" class="com.ldcgroup.action.TradeAction105">
+				<result name="input" type="tiles">pages.action.addTrade105.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade106" class="com.ldcgroup.action.TradeAction106"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade106.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade106.tiles</result>
+			</action>
+			<action name="addTrade106" class="com.ldcgroup.action.TradeAction106">
+				<result name="input" type="tiles">pages.action.addTrade106.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade107" class="com.ldcgroup.action.TradeAction107"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade107.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade107.tiles</result>
+			</action>
+			<action name="addTrade107" class="com.ldcgroup.action.TradeAction107">
+				<result name="input" type="tiles">pages.action.addTrade107.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade201" class="com.ldcgroup.action.TradeAction201"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade201.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade201.tiles</result>
+			</action>
+			<action name="addTrade201" class="com.ldcgroup.action.TradeAction201">
+				<result name="input" type="tiles">pages.action.addTrade201.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade202" class="com.ldcgroup.action.TradeAction202"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade202.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade202.tiles</result>
+			</action>
+			<action name="addTrade202" class="com.ldcgroup.action.TradeAction202">
+				<result name="input" type="tiles">pages.action.addTrade202.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			
+			<!-- Category -->
+			<action name="initializeCategory" class="com.ldcgroup.common.CategoryAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addCategory.tiles</result>
+			</action>
+			<action name="addCategory" class="com.ldcgroup.common.CategoryAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addCategory.tiles</result>
+				<result name="success" type="tiles">pages.common.showCategory.tiles</result>
+			</action>
+			<action name="listCategory" class="com.ldcgroup.common.CategoryAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showCategory.tiles</result>
+			</action>
+			<action name="deleteCategory" class="com.ldcgroup.common.CategoryAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showCategory.tiles</result>
+			</action>
+			<action name="detailCategory" class="com.ldcgroup.common.CategoryAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailCategory.tiles</result>
+			</action>
+			<action name="updateCategory" class="com.ldcgroup.common.CategoryAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailCategory.tiles</result>
+				<result name="success" type="tiles">pages.common.showCategory.tiles</result>
+			</action>
+
+			<!-- Company -->
+			<action name="initializeCompany" class="com.ldcgroup.common.CompanyAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addCompany.tiles</result>
+			</action>
+			<action name="addCompany" class="com.ldcgroup.common.CompanyAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addCompany.tiles</result>				
+				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
+			</action>
+			<action name="listCompany" class="com.ldcgroup.common.CompanyAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
+			</action>
+			<action name="deleteCompany" class="com.ldcgroup.common.CompanyAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
+			</action>
+			<action name="detailCompany" class="com.ldcgroup.common.CompanyAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailCompany.tiles</result>
+			</action>
+			<action name="updateCompany" class="com.ldcgroup.common.CompanyAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailCompany.tiles</result>				
+				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
+			</action>
+
+			<!-- Member -->
+			<action name="initializeMember" class="com.ldcgroup.common.MemberAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addMember.tiles</result>
+			</action>
+			<action name="addMember" class="com.ldcgroup.common.MemberAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addMember.tiles</result>
+				<result name="success" type="tiles">pages.common.showMember.tiles</result>
+			</action>
+			<action name="listMember" class="com.ldcgroup.common.MemberAction"
+				method="list" >
+				<result name="success" type="tiles">pages.common.showMember.tiles</result>
+			</action>
+			<action name="deleteMember" class="com.ldcgroup.common.MemberAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showMember.tiles</result>
+			</action>
+			<action name="detailMember" class="com.ldcgroup.common.MemberAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailMember.tiles</result>
+			</action>
+			<action name="updateMember" class="com.ldcgroup.common.MemberAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailMember.tiles</result>
+				<result name="success" type="tiles">pages.common.showMember.tiles</result>
+			</action>
+
+			<!-- Rate -->
+			<action name="initializeRate" class="com.ldcgroup.common.RateAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addRate.tiles</result>
+			</action>
+			<action name="addRate" class="com.ldcgroup.common.RateAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addRate.tiles</result>
+				<result name="success" type="tiles">pages.common.showRate.tiles</result>
+			</action>
+			<action name="listRate" class="com.ldcgroup.common.RateAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showRate.tiles</result>
+			</action>
+			<action name="deleteRate" class="com.ldcgroup.common.RateAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showRate.tiles</result>
+			</action>
+			<action name="detailRate" class="com.ldcgroup.common.RateAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailRate.tiles</result>
+			</action>
+			<action name="updateRate" class="com.ldcgroup.common.RateAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailRate.tiles</result>
+				<result name="success" type="tiles">pages.common.showRate.tiles</result>
+			</action>
+
+			<!-- Role -->
+			<action name="initializeRole" class="com.ldcgroup.common.RoleAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addRole.tiles</result>
+			</action>
+			<action name="addRole" class="com.ldcgroup.common.RoleAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addRole.tiles</result>
+				<result name="success" type="tiles">pages.common.showRole.tiles</result>
+			</action>
+			<action name="listRole" class="com.ldcgroup.common.RoleAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showRole.tiles</result>
+			</action>
+			<action name="deleteRole" class="com.ldcgroup.common.RoleAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showRole.tiles</result>
+			</action>
+			<action name="detailRole" class="com.ldcgroup.common.RoleAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailRole.tiles</result>
+			</action>
+			<action name="updateRole" class="com.ldcgroup.common.RoleAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailRole.tiles</result>
+				<result name="success" type="tiles">pages.common.showRole.tiles</result>
+			</action>
+
+			<!-- Statement -->
+			<action name="initializeStatement" class="com.ldcgroup.common.StatementAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addStatement.tiles</result>
+			</action>
+			<action name="addStatement" class="com.ldcgroup.common.StatementAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addStatement.tiles</result>
+				<result name="success" type="tiles">pages.common.showStatement.tiles</result>
+			</action>
+			<action name="listStatement" class="com.ldcgroup.common.StatementAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showStatement.tiles</result>
+			</action>
+			<action name="deleteStatement" class="com.ldcgroup.common.StatementAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showStatement.tiles</result>
+			</action>
+			<action name="detailStatement" class="com.ldcgroup.common.StatementAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailStatement.tiles</result>
+			</action>
+			<action name="updateStatement" class="com.ldcgroup.common.StatementAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailStatement.tiles</result>
+				<result name="success" type="tiles">pages.common.showStatement.tiles</result>
+			</action>
+
+			<!-- Type -->
+			<action name="initializeType" class="com.ldcgroup.common.TypeAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addType.tiles</result>
+			</action>
+			<action name="addType" class="com.ldcgroup.common.TypeAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addType.tiles</result>
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="listType" class="com.ldcgroup.common.TypeAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="deleteType" class="com.ldcgroup.common.TypeAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="detailType" class="com.ldcgroup.common.TypeAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailType.tiles</result>
+			</action>
+			<action name="updateType" class="com.ldcgroup.common.TypeAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailType.tiles</result>
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+
+			<!-- Trade -->
+			<action name="initializeTrade" class="com.ldcgroup.common.TradeAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addTrade.tiles</result>
+			</action>
+			<action name="addTrade" class="com.ldcgroup.common.TradeAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addTrade.tiles</result>
+				<result name="success" type="tiles">pages.common.showTrade.tiles</result>
+			</action>
+			<action name="listTrade" class="com.ldcgroup.common.TradeAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showTrade.tiles</result>
+			</action>
+			<action name="deleteTrade" class="com.ldcgroup.common.TradeAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showTrade.tiles</result>
+			</action>
+			<action name="detailTrade" class="com.ldcgroup.common.TradeAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailTrade.tiles</result>
+			</action>
+			<action name="updateTrade" class="com.ldcgroup.common.TradeAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailTrade.tiles</result>
+				<result name="success" type="tiles">pages.common.showTrade.tiles</result>
+			</action>
+			
+	</package>
+</struts>
