@@ -53,7 +53,7 @@
     	                  "<s:text name='type.004' />", 
     	                  "<s:text name='type.005' />"], // array for legend. for simple graph type legend will be extracted from labels if you don't set this
     			type: 'stacked', // for multi array data default graph type is stacked, you can change to 'multi' for multi bar type
-    			showValues: true, // you can use this for multi and stacked type and it will show values of every bar part
+    			showValues: false, // you can use this for multi and stacked type and it will show values of every bar part
     			showValuesColor: '#fff' // color of font for values 	
     	  });
       });
