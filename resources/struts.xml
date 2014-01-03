@@ -589,7 +589,7 @@
 			</action>
 			<action name="listTrade" class="com.ldcgroup.common.TradeAction"
 				method="list">
-				<result name="success" type="tiles">pages.common.showTrade.tiles</result>
+				<result name="success" type="tiles">pages.common.showTradeList.tiles</result>
 			</action>
 			<action name="deleteTrade" class="com.ldcgroup.common.TradeAction"
 				method="delete">

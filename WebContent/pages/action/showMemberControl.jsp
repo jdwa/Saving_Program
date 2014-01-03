@@ -71,8 +71,6 @@
 					<sj:div><a href="listRole.action"><s:text name="role.list.all" /></a></sj:div>
 					<sj:div><a href="initializeType.action"><s:text name="type.add" /></a></sj:div>
 					<sj:div><a href="listType.action"><s:text name="type.list.all" /></a></sj:div>
-					<sj:div><a href="initializeMember.action"><s:text name="member.add" /></a></sj:div>
-					<sj:div><a href="listMember.action"><s:text name="member.list.all" /></a></sj:div>
 					<sj:div><a href="initializeStatement.action"><s:text name="statement.add" /></a></sj:div>
 					<sj:div><a href="listStatement.action"><s:text name="statement.list.all" /></a></sj:div>
 					<sj:div><a href="initializeTrade.action"><s:text name="trade.add" /></a></sj:div>

@@ -184,28 +184,34 @@ public class TradeAction104 extends ActionSupport implements Preparable, Session
 		double type005Sum = 0 , type005Withdraw = 0; // 利息撥補 "005"
 		double cur_type005Sum = 0 , cur_type005Withdraw = 0; // 利息撥補 "005"
 
+		Calendar tradeCalendar = Calendar.getInstance();
+		tradeCalendar.setTime(trade.getSettlement_date());				
+
 		boolean breakloop = false;
 		this.statementList = statementBo.list(this.member);
 		Iterator<Statement> i = this.statementList.iterator();
 		while (i.hasNext() && (!breakloop)) {
 			Statement statement = (Statement) i.next();
 			if ("001".equals(statement.getType().getType_no())) {
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(now); 
-				int cYear = calendar.get(Calendar.YEAR); // This year
-				calendar.setTime(statement.getCreation_date());
-				int sYear = calendar.get(Calendar.YEAR);
-				for (int idx = sYear; idx <= cYear; idx++) {
-					Rate rate = getRateBo().findByYear(idx);
+				Calendar indexCalendar = Calendar.getInstance();
+				indexCalendar.setTime(statement.getSettlement_date());
+				indexCalendar.add(Calendar.MONTH, 1); // 下個月開始計息
+				while (!indexCalendar.after(tradeCalendar)) {
+					int idxYear = indexCalendar.get(Calendar.YEAR);
+					//-- System.out.println("ID : " + statement.getId() + ", Fund : [" + statement.getFund() + "], Year-Month-Day : [" + indexCalendar.get(Calendar.YEAR) + "-" + (indexCalendar.get(Calendar.MONTH) + 1) + "-" + indexCalendar.get(Calendar.DATE) + "]");					
+					Rate rate = getRateBo().findByYear(idxYear);
 					if ( rate != null) {
-						cur_type005Sum += statement.getFund() * (rate.getRate_value()/100);
+						cur_type005Sum += statement.getFund() * (rate.getRate_value()/100/12);
+						//-- System.out.println("Year : [" + idxYear + "], interest : " + cur_type005Sum);						
 					} else {
-						addActionError(getText("rate.year.not.exist") + idx);
+						addActionError(getText("rate.year.not.exist") + idxYear);
 						returnValue = INPUT;
 						breakloop = true;
 						break;
 					}
+					indexCalendar.add(Calendar.MONTH, 1);
 				}
+				
 				/*--
 				for (int idx = 0; idx < this.rateList.size(); idx++) {
 					Rate rate = rateList.get(idx);

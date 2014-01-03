@@ -183,7 +183,6 @@ public class TradeAction extends ActionSupport implements Preparable, SessionAwa
 		
 		Date now = new Date(); // Update time
 		orgTrade.setValid(trade.getValid());
-		orgTrade.setCategory(trade.getCategory());
 		orgTrade.setRemark(trade.getRemark());
 		orgTrade.setCompany(((Member)this.session.get("CurrentMember")).getCompany());
 		orgTrade.setTimestamp(((Member)this.session.get("CurrentMember")).getAccount() + ", " + getText("action.last.update") + "[" + now + "]");

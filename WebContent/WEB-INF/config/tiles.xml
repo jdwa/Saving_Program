@@ -219,6 +219,10 @@
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/common/showTrade.jsp"/>      
   </definition>
+  <definition name="pages.common.showTradeList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showTradeList.jsp"/>      
+  </definition>
   <definition name="pages.common.detailTrade.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/common/detailTrade.jsp"/>      

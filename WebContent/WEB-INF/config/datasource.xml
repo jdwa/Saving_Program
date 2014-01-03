@@ -13,7 +13,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=IP" />
+		<property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=Saving_Program" />
 		<property name="username" value="ip.admin" />
 		<property name="password" value="!QAZxsw2" />
 	</bean>
