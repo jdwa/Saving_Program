@@ -35,7 +35,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 /*
- * Trade Action 01 : 每月提撥（批次）
+ * Trade Action 02 : 每月提撥（批次）
  * @author jdwa
  */
 public class TradeAction002 extends ActionSupport implements Preparable, SessionAware {

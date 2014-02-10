@@ -6,15 +6,58 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ldcgroup.model.Member;
+import com.ldcgroup.model.Point;
 import com.ldcgroup.model.Statement;
+import com.ldcgroup.model.Task;
 import com.ldcgroup.model.Trade;
 
 public class TransactionServiceBoImpl implements TransactionServiceBo {
 
+	private Task task;
 	private Trade trade;
 	private MemberBo memberBo;
+	private PointBo pointBo;
 	private StatementBo statementBo;
+	private TaskBo taskBo;
 	private TradeBo tradeBo;
+	
+	@Override
+	@Transactional
+	public void addTaskPointList(Task task, List<Point> points) {
+		
+		// Begin Transaction
+		// Add Task
+		getTaskBo().add(task);
+		// Add all points
+		Iterator<Point> i = points.iterator();
+		while (i.hasNext()) {
+			Point point = (Point) i.next();
+			getPointBo().add(point);
+		}
+		// End Transaction
+	}
+	
+	@Override
+	@Transactional
+	public void addTaskPointList(Task task, List<Point> points, List<Member> members) {
+		
+		// Begin Transaction
+		// Add or Update member record
+		Iterator<Member> m = members.iterator();
+		while (m.hasNext()) {
+			Member member = (Member) m.next();
+			getMemberBo().add(member);
+		}
+		// Add Trade
+		getTaskBo().add(task);
+		// Add all statements
+		Iterator<Point> i = points.iterator();
+		while (i.hasNext()) {
+			Point point = (Point) i.next();
+			getPointBo().add(point);
+		}
+		// End Transaction
+	}
 	
 	@Override
 	@Transactional
@@ -126,5 +169,29 @@ public class TransactionServiceBoImpl implements TransactionServiceBo {
 
 	public void setTradeBo(TradeBo tradeBo) {
 		this.tradeBo = tradeBo;
+	}
+
+	public Task getTask() {
+		return task;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
+	}
+
+	public PointBo getPointBo() {
+		return pointBo;
+	}
+
+	public void setPointBo(PointBo pointBo) {
+		this.pointBo = pointBo;
+	}
+
+	public TaskBo getTaskBo() {
+		return taskBo;
+	}
+
+	public void setTaskBo(TaskBo taskBo) {
+		this.taskBo = taskBo;
 	}
 }

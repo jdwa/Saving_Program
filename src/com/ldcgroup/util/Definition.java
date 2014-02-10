@@ -16,6 +16,7 @@ public class Definition {
 	public static final String ROLE_ADMIN = "ROLE_ADMIN";
 	public static final String ROLE_HR = "ROLE_HR";
 	public static final String ROLE_FIN = "ROLE_FIN";
+	public static final String ROLE_TRAINER = "ROLE_TRAINER";
 	public static final String ROLE_NORMAL = "ROLE_NORMAL";
 	public static final String ROLE_RESIGN = "ROLE_RESIGN";
 	public static final String ROLE_RETIRE = "ROLE_RETIRE";
@@ -24,7 +25,6 @@ public class Definition {
 	public static final String ROLE_PROMOTE = "ROLE_PROMOTE";
 	public static final String ROLE_ABANDON = "ROLE_ABANDON";
 	public static final String ROLE_ACCIDENT = "ROLE_ACCIDENT";
-	
 		
 	public static final String HQ_REMAIN = "HQ_REMAIN"; // 只有總公司有『重新分配』帳號
 	/*
