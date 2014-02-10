@@ -56,6 +56,8 @@
 				<result name="input" type="tiles">pages.action.initializeData.tiles</result>
 				<result name="success" type="tiles">pages.action.loginMember.tiles</result>
 			</action>
+			
+			<!-- Trade & Statement -->
 			<action name="listMemberStatement" class="com.ldcgroup.action.MemberStatementListAction">
 				<result name="success" type="tiles">pages.action.showMemberStatementList.tiles</result>
 			</action>
@@ -252,15 +254,280 @@
 				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
 				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
 			</action>			
-			<action name="initializeQueryMember" class="com.ldcgroup.action.MemberQueryAction"
+			<action name="initializeQueryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction"
 				method="initialize">
-				<result name="input" type="tiles">pages.action.queryMember.tiles</result>
-				<result name="success" type="tiles">pages.action.queryMember.tiles</result>
+				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
+				<result name="success" type="tiles">pages.action.queryMemberStatement.tiles</result>
 			</action>
-			<action name="queryMember" class="com.ldcgroup.action.MemberQueryAction">
-				<result name="input" type="tiles">pages.action.queryMember.tiles</result>
+			<action name="queryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction">
+				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
 				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			</action>
+			
+			<!-- Task & Point -->
+			<action name="listMemberPoint" class="com.ldcgroup.action.MemberPointListAction">
+				<result name="success" type="tiles">pages.action.showMemberPointList.tiles</result>
+			</action>
+			<action name="listMemberPointGrid" class="com.ldcgroup.action.MemberPointGridAction">
+				<result name="success" type="tiles">pages.action.showMemberPointGrid.tiles</result>
+			</action>
+			<action name="gridMemberPoint" class="com.ldcgroup.action.MemberPointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridItem001Point" class="com.ldcgroup.action.Item001PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridItem002Point" class="com.ldcgroup.action.Item002PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridItem003Point" class="com.ldcgroup.action.Item003PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridItem004Point" class="com.ldcgroup.action.Item004PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridItem005Point" class="com.ldcgroup.action.Item005PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="gridItem006Point" class="com.ldcgroup.action.Item006PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="gridItem007Point" class="com.ldcgroup.action.Item007PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="gridItem008Point" class="com.ldcgroup.action.Item008PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="gridItem101Point" class="com.ldcgroup.action.Item101PointGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						pointList\[\d+\]\.id,
+						pointList\[\d+\]\.task\.tk_no,
+						pointList\[\d+\]\.member\.account,
+						pointList\[\d+\]\.company\.cmp_description,
+						pointList\[\d+\]\.value,
+						pointList\[\d+\]\.item\.item_description,
+						pointList\[\d+\]\.settlement_date,
+						pointList\[\d+\]\.creation_date,
+						pointList\[\d+\]\.remark,
+						pointList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>									
+			<action name="initializeQueryTask" class="com.ldcgroup.action.TaskActionQuery"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryTask.tiles</result>
+				<result name="success" type="tiles">pages.action.queryTask.tiles</result>
+			</action>
+			<action name="queryTask" class="com.ldcgroup.action.TaskActionQuery">
+				<result name="input" type="tiles">pages.action.queryTask.tiles</result>
+				<result name="success" type="tiles">pages.action.showTaskPointGrid.tiles</result>
+			</action>	
+			<action name="initializeInvalidateTask" class="com.ldcgroup.action.TaskActionInvalidate"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.invalidateTask.tiles</result>
+				<result name="success" type="tiles">pages.action.invalidateTask.tiles</result>
+			</action>
+			<action name="invalidateTask" class="com.ldcgroup.action.TaskActionInvalidate">
+				<result name="input" type="tiles">pages.action.invalidateTask.tiles</result>
+				<result name="success" type="tiles">pages.action.showTaskPointGrid.tiles</result>
+			</action>			
+			<action name="initializeQueryMemberPoint" class="com.ldcgroup.action.MemberPointQueryAction"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryMemberPoint.tiles</result>
+				<result name="success" type="tiles">pages.action.queryMemberPoint.tiles</result>
 			</action>							
+			<action name="queryMemberPoint" class="com.ldcgroup.action.MemberPointQueryAction">
+				<result name="input" type="tiles">pages.action.queryMemberPoint.tiles</result>
+				<result name="success" type="tiles">pages.action.showMemberPointGrid.tiles</result>
+			</action>
+			
+			<!-- Task Actions -->
+			<action name="initializeTask001" class="com.ldcgroup.action.TaskAction001"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTask001.tiles</result>
+				<result name="success" type="tiles">pages.action.addTask001.tiles</result>
+			</action>
+			<action name="addTask001" class="com.ldcgroup.action.TaskAction001">
+				<result name="input" type="tiles">pages.action.addTask001.tiles</result>
+				<result name="success" type="tiles">pages.action.showTaskPointGrid.tiles</result>
+			</action>
+			<action name="initializeTask002" class="com.ldcgroup.action.TaskAction002"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTask002.tiles</result>
+				<result name="success" type="tiles">pages.action.addTask002.tiles</result>
+			</action>
+			<action name="addTask002" class="com.ldcgroup.action.TaskAction002">
+				<result name="input" type="tiles">pages.action.addTask002.tiles</result>
+				<result name="success" type="tiles">pages.action.showTaskPointGrid.tiles</result>
+			</action>
 						
 			<!-- Trade Actions -->
 			<action name="initializeTrade001" class="com.ldcgroup.action.TradeAction001"
@@ -437,6 +704,34 @@
 				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
 			</action>
 
+			<!-- Item -->
+			<action name="initializeItem" class="com.ldcgroup.common.ItemAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addItem.tiles</result>
+			</action>
+			<action name="addItem" class="com.ldcgroup.common.ItemAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addItem.tiles</result>
+				<result name="success" type="tiles">pages.common.showItem.tiles</result>
+			</action>
+			<action name="listItem" class="com.ldcgroup.common.ItemAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showItem.tiles</result>
+			</action>
+			<action name="deleteItem" class="com.ldcgroup.common.ItemAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showItem.tiles</result>
+			</action>
+			<action name="detailItem" class="com.ldcgroup.common.ItemAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailItem.tiles</result>
+			</action>
+			<action name="updateItem" class="com.ldcgroup.common.ItemAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailItem.tiles</result>
+				<result name="success" type="tiles">pages.common.showItem.tiles</result>
+			</action>
+			
 			<!-- Member -->
 			<action name="initializeMember" class="com.ldcgroup.common.MemberAction"
 				method="initialize">
@@ -465,6 +760,34 @@
 				<result name="success" type="tiles">pages.common.showMember.tiles</result>
 			</action>
 
+			<!-- Point -->
+			<action name="initializePoint" class="com.ldcgroup.common.PointAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addPoint.tiles</result>
+			</action>
+			<action name="addPoint" class="com.ldcgroup.common.PointAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addPoint.tiles</result>
+				<result name="success" type="tiles">pages.common.showPoint.tiles</result>
+			</action>
+			<action name="listPoint" class="com.ldcgroup.common.PointAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showPoint.tiles</result>
+			</action>
+			<action name="deletePoint" class="com.ldcgroup.common.PointAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showPoint.tiles</result>
+			</action>
+			<action name="detailPoint" class="com.ldcgroup.common.PointAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailPoint.tiles</result>
+			</action>
+			<action name="updatePoint" class="com.ldcgroup.common.PointAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailPoint.tiles</result>
+				<result name="success" type="tiles">pages.common.showPoint.tiles</result>
+			</action>
+			
 			<!-- Rate -->
 			<action name="initializeRate" class="com.ldcgroup.common.RateAction"
 				method="initialize">
@@ -577,6 +900,34 @@
 				<result name="success" type="tiles">pages.common.showType.tiles</result>
 			</action>
 
+			<!-- Task -->
+			<action name="initializeTask" class="com.ldcgroup.common.TaskAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addTask.tiles</result>
+			</action>
+			<action name="addTask" class="com.ldcgroup.common.TaskAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addTask.tiles</result>
+				<result name="success" type="tiles">pages.common.showTask.tiles</result>
+			</action>
+			<action name="listTask" class="com.ldcgroup.common.TaskAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showTaskList.tiles</result>
+			</action>
+			<action name="deleteTask" class="com.ldcgroup.common.TaskAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showTask.tiles</result>
+			</action>
+			<action name="detailTask" class="com.ldcgroup.common.TaskAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailTask.tiles</result>
+			</action>
+			<action name="updateTask" class="com.ldcgroup.common.TaskAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailTask.tiles</result>
+				<result name="success" type="tiles">pages.common.showTask.tiles</result>
+			</action>
+			
 			<!-- Trade -->
 			<action name="initializeTrade" class="com.ldcgroup.common.TradeAction"
 				method="initialize">

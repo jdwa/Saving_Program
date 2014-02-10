@@ -28,8 +28,8 @@
 	-->
 	<sj:accordion id="accordion" heightStyle="content" animate="true">
 		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
-			<s:set name="menu.system.operation"><s:text name="menu.system.operation" /></s:set>
-			<sj:accordionItem title="%{menu.system.operation}">
+			<s:set name="menu.system.operation.saving.program"><s:text name="menu.system.operation.saving.program" /></s:set>
+			<sj:accordionItem title="%{menu.system.operation.saving.program}">
 				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">
 					<sj:div><a href="initializeTrade001.action"><s:text name="action.trade.001" /></a></sj:div>		
 					<sj:div><a href="initializeTrade002.action"><s:text name="action.trade.002" /></a></sj:div>
@@ -50,7 +50,7 @@
 					<sj:div><a href="initializeTrade202.action"><s:text name="action.trade.202" /></a></sj:div>
 					<sj:div><a href="initializeInvalidateTrade.action"><s:text name="trade.action.invalidate" /></a></sj:div>
 					<sj:div><a href="initializeQueryTrade.action"><s:text name="trade.action.query" /></a></sj:div>
-					<sj:div><a href="initializeQueryMember.action"><s:text name="member.action.query" /></a></sj:div>
+					<sj:div><a href="initializeQueryMemberStatement.action"><s:text name="member.action.query.statement" /></a></sj:div>
 				</security:authorize>
 				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">	
 					<sj:div><a href="listMemberStatementGrid.action"><s:text name="statement.grid.member" /></a></sj:div>					
@@ -58,7 +58,24 @@
 				</security:authorize>
 			</sj:accordionItem>
 		</security:authorize>
-		
+
+		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
+			<s:set name="menu.system.operation.star.program"><s:text name="menu.system.operation.star.program" /></s:set>
+			<sj:accordionItem title="%{menu.system.operation.star.program}">
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER')">	
+					<sj:div><a href="initializeTask001.action"><s:text name="action.task.001" /></a></sj:div>		
+					<sj:div><a href="initializeTask002.action"><s:text name="action.task.002" /></a></sj:div>					
+					<sj:div><a href="initializeInvalidateTask.action"><s:text name="task.action.invalidate" /></a></sj:div>
+					<sj:div><a href="initializeQueryTask.action"><s:text name="task.action.query" /></a></sj:div>
+					<sj:div><a href="initializeQueryMemberPoint.action"><s:text name="member.action.query.point" /></a></sj:div>
+				</security:authorize>
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">	
+					<sj:div><a href="listMemberPointGrid.action"><s:text name="point.grid.member" /></a></sj:div>					
+					<sj:div><a href="listMemberPoint.action"><s:text name="point.list.member" /></a></sj:div>
+				</security:authorize>
+			</sj:accordionItem>
+		</security:authorize>
+				
 		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_FIN')">
 			<s:set name="menu.system.config"><s:text name="menu.system.config" /></s:set>
 			<sj:accordionItem title="%{menu.system.config}">
@@ -67,12 +84,18 @@
 					<sj:div><a href="listCategory.action"><s:text name="category.list.all" /></a></sj:div>				
 					<sj:div><a href="initializeCompany.action"><s:text name="company.add" /></a></sj:div>
 					<sj:div><a href="listCompany.action"><s:text name="company.list.all" /></a></sj:div>
+					<sj:div><a href="initializeItem.action"><s:text name="item.add" /></a></sj:div>
+					<sj:div><a href="listItem.action"><s:text name="item.list.all" /></a></sj:div>						
+					<sj:div><a href="initializePoint.action"><s:text name="point.add" /></a></sj:div>
+					<sj:div><a href="listPoint.action"><s:text name="point.list.all" /></a></sj:div>
 					<sj:div><a href="initializeRole.action"><s:text name="role.add" /></a></sj:div>
 					<sj:div><a href="listRole.action"><s:text name="role.list.all" /></a></sj:div>
 					<sj:div><a href="initializeType.action"><s:text name="type.add" /></a></sj:div>
 					<sj:div><a href="listType.action"><s:text name="type.list.all" /></a></sj:div>
 					<sj:div><a href="initializeStatement.action"><s:text name="statement.add" /></a></sj:div>
 					<sj:div><a href="listStatement.action"><s:text name="statement.list.all" /></a></sj:div>
+					<sj:div><a href="initializeTask.action"><s:text name="task.add" /></a></sj:div>
+					<sj:div><a href="listTask.action"><s:text name="task.list.all" /></a></sj:div>
 					<sj:div><a href="initializeTrade.action"><s:text name="trade.add" /></a></sj:div>
 					<sj:div><a href="listTrade.action"><s:text name="trade.list.all" /></a></sj:div>
 				</security:authorize>
@@ -87,10 +110,10 @@
 			</sj:accordionItem>
 		</security:authorize>
 		
-		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
+		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
 			<s:set name="menu.system.management"><s:text name="menu.system.management" /></s:set>		
 			<sj:accordionItem title="%{menu.system.management}">
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
 					<sj:div><a href="initializeChangeMemberPassword.action"><s:text name="submit.changePassword" /></a></sj:div>
 					<sj:div><a href="logoutMember.action"><s:text name="submit.logout" /></a></sj:div>
 				</security:authorize>

@@ -217,7 +217,17 @@ public class DataInitializeAction extends ActionSupport implements Preparable, S
 				role.setCreation_date(now);
 				roleBo.add(role);
 			}
-	
+
+			if (roleBo.findByCode(Definition.ROLE_TRAINER) == null) {
+				Role role = new Role();
+				role.setRole_code(Definition.ROLE_TRAINER);
+				role.setRole_description(getText("role.trainer"));
+				role.setRemark(getText("role.trainer"));
+				role.setTimestamp(getText("action.system.defaule") + ", " + getText("action.last.update") + "[" + now + "]");
+				role.setCreation_date(now);
+				roleBo.add(role);
+			}
+			
 			if (roleBo.findByCode(Definition.ROLE_NORMAL) == null) {
 				Role role = new Role();
 				role.setRole_code(Definition.ROLE_NORMAL);

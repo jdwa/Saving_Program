@@ -28,7 +28,7 @@
 			timepicker="true" timepickerShowSecond="true" timepickerFormat="HH:mm:ss" />
 		<s:submit value="%{getText('submit.add')}" align="center" />
 	</s:form>
-	<a href="listRole.action"><s:text name="role.list.all" /></a>
+	<center><br><a href="listRole.action"><s:text name="role.list.all" /></a></center>
 </body>
 </html>
 
