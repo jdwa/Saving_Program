@@ -13,7 +13,7 @@
 		<intercept-url pattern="/initializeLoginMember.action" access="permitAll" />
 		<intercept-url pattern="/loginMember.action" access="permitAll" />
 		<intercept-url pattern="/initializeData.action" access="hasRole('ROLE_INITIALIZE')" />
-		<intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE', 'ROLE_REMAIN', 'ROLE_RETURN')" />
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_FIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE', 'ROLE_REMAIN', 'ROLE_RETURN')" />
 		<form-login login-page="/pages/action/loginMember.jsp" authentication-failure-url="/pages/action/loginMember.jsp" />
 	</http>
 	

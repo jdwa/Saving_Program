@@ -23,10 +23,13 @@
 			<list>
 				<value>com.ldcgroup.model.Category</value>
 				<value>com.ldcgroup.model.Company</value>
+				<value>com.ldcgroup.model.Item</value>
 				<value>com.ldcgroup.model.Member</value>
+				<value>com.ldcgroup.model.Point</value>
 				<value>com.ldcgroup.model.Rate</value>
 				<value>com.ldcgroup.model.Role</value>
 				<value>com.ldcgroup.model.Statement</value>
+				<value>com.ldcgroup.model.Task</value>
 				<value>com.ldcgroup.model.Trade</value>
 				<value>com.ldcgroup.model.Type</value>
 			</list>
@@ -35,10 +38,13 @@
 			<list>
 				<value>com/ldcgroup/model/Category.hbm.xml</value>
 				<value>com/ldcgroup/model/Company.hbm.xml</value>
+				<value>com/ldcgroup/model/Item.hbm.xml</value>
 				<value>com/ldcgroup/model/Member.hbm.xml</value>
+				<value>com/ldcgroup/model/Point.hbm.xml</value>
 				<value>com/ldcgroup/model/Rate.hbm.xml</value>
 				<value>com/ldcgroup/model/Role.hbm.xml</value>
 				<value>com/ldcgroup/model/Statement.hbm.xml</value>
+				<value>com/ldcgroup/model/Task.hbm.xml</value>
 				<value>com/ldcgroup/model/Trade.hbm.xml</value>
 				<value>com/ldcgroup/model/Type.hbm.xml</value>
 			</list>

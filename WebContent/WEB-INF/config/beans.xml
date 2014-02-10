@@ -24,7 +24,15 @@
 	<bean id="companyBo" class="com.ldcgroup.bo.CompanyBoImpl">
 		<property name="companyDao" ref="companyDao" />
 	</bean>
-	
+
+	<bean id="itemDao" class="com.ldcgroup.dao.ItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="itemBo" class="com.ldcgroup.bo.ItemBoImpl">
+		<property name="itemDao" ref="itemDao" />
+	</bean>	
+		
 	<bean id="memberDao" class="com.ldcgroup.dao.MemberDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -48,7 +56,15 @@
 	<bean id="roleBo" class="com.ldcgroup.bo.RoleBoImpl">
 		<property name="roleDao" ref="roleDao" />
 	</bean>
-	
+
+	<bean id="pointDao" class="com.ldcgroup.dao.PointDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="pointBo" class="com.ldcgroup.bo.PointBoImpl">
+		<property name="pointDao" ref="pointDao" />
+	</bean>
+		
 	<bean id="statementDao" class="com.ldcgroup.dao.StatementDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -56,7 +72,15 @@
 	<bean id="statementBo" class="com.ldcgroup.bo.StatementBoImpl">
 		<property name="statementDao" ref="statementDao" />
 	</bean>
-	
+
+	<bean id="taskDao" class="com.ldcgroup.dao.TaskDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="taskBo" class="com.ldcgroup.bo.TaskBoImpl">
+		<property name="taskDao" ref="taskDao" />
+	</bean>
+		
 	<bean id="typeDao" class="com.ldcgroup.dao.TypeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -75,7 +99,9 @@
 	
 	<bean id="transactionServiceBo" class="com.ldcgroup.bo.TransactionServiceBoImpl">
 		<property name="memberBo" ref="memberBo" />
+		<property name="pointBo" ref="pointBo" />
 		<property name="statementBo" ref="statementBo" />
+		<property name="taskBo" ref="taskBo" />
 		<property name="tradeBo" ref="tradeBo" />
 	</bean>
 

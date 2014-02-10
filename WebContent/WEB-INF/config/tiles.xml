@@ -28,7 +28,8 @@
   </definition>
   <definition name="pages.action.showMemberControl.tiles" extends="baseLayout">
       <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>            
-  </definition>  
+  </definition>
+  <!-- Trade & Statement --> 
   <definition name="pages.action.showMemberStatementList.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/showMemberStatementList.jsp"/>      
@@ -53,10 +54,49 @@
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/invalidateTrade.jsp"/>      
   </definition>
-  <definition name="pages.action.queryMember.tiles" extends="baseLayout">
+  <definition name="pages.action.queryMemberStatement.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
-      <put-attribute name="body" value="/pages/action/queryMember.jsp"/>      
+      <put-attribute name="body" value="/pages/action/queryMemberStatement.jsp"/>      
+  </definition>
+  <!-- Task & Point -->
+  <definition name="pages.action.showMemberPointList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showMemberPointList.jsp"/>      
+  </definition> 
+  <definition name="pages.action.showMemberPointGrid.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showMemberPointGrid.jsp"/>      
+  </definition>
+  <definition name="pages.action.showTaskPointList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showTaskPointList.jsp"/>      
+  </definition>
+   <definition name="pages.action.showTaskPointGrid.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/showTaskPointGrid.jsp"/>      
+  </definition>
+  <definition name="pages.action.queryTask.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/queryTask.jsp"/>      
+  </definition>
+  <definition name="pages.action.invalidateTask.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/invalidateTask.jsp"/>      
+  </definition>
+  <definition name="pages.action.queryMemberPoint.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/queryMemberPoint.jsp"/>      
   </definition>  
+
+  <!-- Task Actions -->
+  <definition name="pages.action.addTask001.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTask001.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTask002.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTask002.jsp"/>      
+  </definition>
   
   <!-- Trade Actions -->
   <definition name="pages.action.addTrade001.tiles" extends="baseLayout">
@@ -154,6 +194,20 @@
       <put-attribute name="body" value="/pages/common/detailCompany.jsp"/>      
   </definition>
   
+    <!-- Item -->
+  <definition name="pages.common.addItem.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addItem.jsp"/>      
+  </definition>
+  <definition name="pages.common.showItem.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showItem.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailItem.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailItem.jsp"/>      
+  </definition>
+  
   <!-- Rate -->
   <definition name="pages.common.addRate.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
@@ -182,6 +236,20 @@
       <put-attribute name="body" value="/pages/common/detailRole.jsp"/>      
   </definition>
   
+  <!-- Point -->
+  <definition name="pages.common.addPoint.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addPoint.jsp"/>      
+  </definition>
+  <definition name="pages.common.showPoint.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showPoint.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailPoint.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailPoint.jsp"/>      
+  </definition>
+
   <!-- Statement -->
   <definition name="pages.common.addStatement.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
@@ -195,7 +263,7 @@
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/common/detailStatement.jsp"/>      
   </definition>
-
+  
   <!-- Type -->
   <definition name="pages.common.addType.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
@@ -209,7 +277,25 @@
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/common/detailType.jsp"/>      
   </definition>
-  
+
+  <!-- Task -->
+  <definition name="pages.common.addTask.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/addTask.jsp"/>      
+  </definition>
+  <definition name="pages.common.showTask.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showTask.jsp"/>      
+  </definition>
+  <definition name="pages.common.showTaskList.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/showTaskList.jsp"/>      
+  </definition>
+  <definition name="pages.common.detailTask.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/common/detailTask.jsp"/>      
+  </definition>
+    
   <!-- Trade -->
   <definition name="pages.common.addTrade.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
