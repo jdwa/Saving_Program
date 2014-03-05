@@ -33,11 +33,11 @@
     	  $("#stacked-graph").jqBarGraph({
     			data: stackedByMonth, // array of data for your graph
     			title: '', // title of your graph, accept HTML
-    			barSpace: 10, // this is default space between bars in pixels
+    			barSpace: 25, // this is default space between bars in pixels
     			width: 800, // default width of your graph
     			height: 250, //default height of your graph
     			color: '#000000', // if you don't send colors for your data this will be default bars color
-    			colors: ['#00CD00', '#00FF00', '#FF4500', '#FFFF00', '#1874CD'], // array of colors that will be used for your bars and legends
+    			colors: ['#18FFFF', '#00FF00', '#FF00FF', '#FFFF00', '#1874CD'], // array of colors that will be used for your bars and legends
     			lbl: '', // if there is no label in your array
     			sort: false, // sort your data before displaying graph, you can sort as 'asc' or 'desc'
     			position: 'bottom', // position of your bars, can be 'bottom' or 'top'. 'top' doesn't work for multi type
