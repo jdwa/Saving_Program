@@ -41,6 +41,22 @@
 		<property name="memberDao" ref="memberDao" />
 	</bean>
 
+	<bean id="payDao" class="com.ldcgroup.dao.PayDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="payBo" class="com.ldcgroup.bo.PayBoImpl">
+		<property name="payDao" ref="payDao" />
+	</bean>
+	
+	<bean id="pointDao" class="com.ldcgroup.dao.PointDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="pointBo" class="com.ldcgroup.bo.PointBoImpl">
+		<property name="pointDao" ref="pointDao" />
+	</bean>
+
 	<bean id="rateDao" class="com.ldcgroup.dao.RateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -57,14 +73,14 @@
 		<property name="roleDao" ref="roleDao" />
 	</bean>
 
-	<bean id="pointDao" class="com.ldcgroup.dao.PointDaoImpl">
+	<bean id="rollDao" class="com.ldcgroup.dao.RollDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="pointBo" class="com.ldcgroup.bo.PointBoImpl">
-		<property name="pointDao" ref="pointDao" />
+	<bean id="rollBo" class="com.ldcgroup.bo.RollBoImpl">
+		<property name="rollDao" ref="rollDao" />
 	</bean>
-		
+
 	<bean id="statementDao" class="com.ldcgroup.dao.StatementDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -81,14 +97,14 @@
 		<property name="taskDao" ref="taskDao" />
 	</bean>
 		
-	<bean id="typeDao" class="com.ldcgroup.dao.TypeDaoImpl">
+	<bean id="termDao" class="com.ldcgroup.dao.TermDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="typeBo" class="com.ldcgroup.bo.TypeBoImpl">
-		<property name="typeDao" ref="typeDao" />
+	<bean id="termBo" class="com.ldcgroup.bo.TermBoImpl">
+		<property name="termDao" ref="termDao" />
 	</bean>
-	
+			
 	<bean id="tradeDao" class="com.ldcgroup.dao.TradeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -97,10 +113,20 @@
 		<property name="tradeDao" ref="tradeDao" />
 	</bean>
 	
+	<bean id="typeDao" class="com.ldcgroup.dao.TypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="typeBo" class="com.ldcgroup.bo.TypeBoImpl">
+		<property name="typeDao" ref="typeDao" />
+	</bean>
+	
 	<bean id="transactionServiceBo" class="com.ldcgroup.bo.TransactionServiceBoImpl">
 		<property name="memberBo" ref="memberBo" />
+		<property name="payBo" ref="payBo" />
 		<property name="pointBo" ref="pointBo" />
 		<property name="statementBo" ref="statementBo" />
+		<property name="rollBo" ref="rollBo" />
 		<property name="taskBo" ref="taskBo" />
 		<property name="tradeBo" ref="tradeBo" />
 	</bean>
