@@ -3,12 +3,16 @@ package com.ldcgroup.bo;
 import java.util.List;
 
 import com.ldcgroup.model.Member;
+import com.ldcgroup.model.Pay;
 import com.ldcgroup.model.Point;
+import com.ldcgroup.model.Roll;
 import com.ldcgroup.model.Statement;
 import com.ldcgroup.model.Task;
 import com.ldcgroup.model.Trade;
 
 public interface TransactionServiceBo {
+	public void addRollPayList(Roll roll, List<Pay> pays);
+	public void addRollPayList(Roll roll, List<Pay> pays, List<Member> members);
 	public void addTaskPointList(Task task, List<Point> points);
 	public void addTaskPointList(Task task, List<Point> points, List<Member> members);
 	public void addTradeStatement(Trade trade, Statement statement);

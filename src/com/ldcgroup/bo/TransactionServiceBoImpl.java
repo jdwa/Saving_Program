@@ -6,20 +6,63 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ldcgroup.model.Member;
+import com.ldcgroup.model.Pay;
 import com.ldcgroup.model.Point;
+import com.ldcgroup.model.Roll;
 import com.ldcgroup.model.Statement;
 import com.ldcgroup.model.Task;
 import com.ldcgroup.model.Trade;
 
 public class TransactionServiceBoImpl implements TransactionServiceBo {
 
+	private Roll roll;
 	private Task task;
 	private Trade trade;
 	private MemberBo memberBo;
+	private PayBo payBo;
 	private PointBo pointBo;
 	private StatementBo statementBo;
+	private RollBo rollBo;
 	private TaskBo taskBo;
 	private TradeBo tradeBo;
+	
+	@Override
+	@Transactional
+	public void addRollPayList(Roll roll, List<Pay> pays) {
+		
+		// Begin Transaction
+		// Add Roll
+		getRollBo().add(roll);
+		// Add all pays
+		Iterator<Pay> i = pays.iterator();
+		while (i.hasNext()) {
+			Pay pay = (Pay) i.next();
+			getPayBo().add(pay);
+		}
+		// End Transaction
+	}
+	
+	@Override
+	@Transactional
+	public void addRollPayList(Roll roll, List<Pay> pays, List<Member> members) {
+		
+		// Begin Transaction
+		// Add or Update member record
+		Iterator<Member> m = members.iterator();
+		while (m.hasNext()) {
+			Member member = (Member) m.next();
+			getMemberBo().add(member);
+		}
+		// Add Trade
+		getRollBo().add(roll);
+		// Add all statements
+		Iterator<Pay> i = pays.iterator();
+		while (i.hasNext()) {
+			Pay pay = (Pay) i.next();
+			getPayBo().add(pay);
+		}
+		// End Transaction
+	}
 	
 	@Override
 	@Transactional
@@ -193,5 +236,29 @@ public class TransactionServiceBoImpl implements TransactionServiceBo {
 
 	public void setTaskBo(TaskBo taskBo) {
 		this.taskBo = taskBo;
+	}
+
+	public Roll getRoll() {
+		return roll;
+	}
+
+	public void setRoll(Roll roll) {
+		this.roll = roll;
+	}
+
+	public PayBo getPayBo() {
+		return payBo;
+	}
+
+	public void setPayBo(PayBo payBo) {
+		this.payBo = payBo;
+	}
+
+	public RollBo getRollBo() {
+		return rollBo;
+	}
+
+	public void setRollBo(RollBo rollBo) {
+		this.rollBo = rollBo;
 	}
 }

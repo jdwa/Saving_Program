@@ -139,7 +139,6 @@ public class PointAction extends ActionSupport implements Preparable, SessionAwa
 	
 	public String add() {
 		Task task = getTaskBo().findByNo(this.point.getTask().getTk_no());
-System.out.println("=============> add() 1");			
 		Date now = new Date();
 		if (point.getCreation_date() == null){
 			point.setCreation_date(now);
@@ -162,7 +161,6 @@ System.out.println("=============> add() 1");
 		point.setTask(task);
 		point.setItem(getItemBo().findByNo(this.point.getItem().getItem_no()));
 		point.setTimestamp(((Member)this.session.get("CurrentMember")).getAccount() + ", " + getText("action.last.update") + "[" + now + "]");
-System.out.println("=============> add() 2");		
 		task.setValue(task.getValue() + point.getValue());
 		getTaskBo().update(task);
 		getPointBo().add(point);

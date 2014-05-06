@@ -63,13 +63,13 @@ public class TradeDaoImpl extends HibernateDaoSupport implements TradeDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Trade> list(Company company) {
-		return (List<Trade>) getHibernateTemplate().find("from Trade e where e.company.id = ?", company.getId());
+		return (List<Trade>) getHibernateTemplate().find("from Trade T where T.company.id = ?", company.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Trade> listValidate() {
-		return (List<Trade>) getHibernateTemplate().find("from Trade e where e.valid = ?", Boolean.TRUE);
+		return (List<Trade>) getHibernateTemplate().find("from Trade T where T.valid = ?", Boolean.TRUE);
 	}
 }

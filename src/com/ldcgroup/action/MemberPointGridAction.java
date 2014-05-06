@@ -78,7 +78,7 @@ public class MemberPointGridAction extends ActionSupport implements Preparable, 
 			if (getSearchField() != null) {
 				for (int i = 0; i < memberPointList.size(); i++) {
 					Point point = memberPointList.get(i);
-					String[] fieldList = {"id","task.tx_no","task.category.category_description","member.account","company.cmp_description",
+					String[] fieldList = {"id","task.tk_no","task.item.item_description","member.account","company.cmp_description",
 										  "fund","item.item_description","settlement_date","creation_date",
 										  "remark","timestamp"};
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

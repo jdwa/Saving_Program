@@ -12,7 +12,6 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.ldcgroup.bo.CategoryBo;
 import com.ldcgroup.bo.MemberBo;
 import com.ldcgroup.bo.PointBo;
 import com.ldcgroup.bo.TaskBo;
@@ -39,7 +38,6 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 	private Member member;
 	private Task task;
 	private Date settlement_date;
-	private CategoryBo categoryBo;
 	private MemberBo memberBo;
 	private PointBo pointBo;
 	private TaskBo taskBo;
@@ -57,13 +55,6 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 
 	@Override
 	public void prepare() throws Exception {
-		if (this.categoryBo == null) {
-			WebApplicationContext cxt = WebApplicationContextUtils
-					.getRequiredWebApplicationContext(ServletActionContext
-							.getServletContext());
-			this.categoryBo = (CategoryBo) cxt.getBean("categoryBo");
-		}
-
 		if (this.memberBo == null) {
 			WebApplicationContext cxt = WebApplicationContextUtils
 					.getRequiredWebApplicationContext(ServletActionContext
@@ -99,10 +90,6 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 			this.transactionServiceBo = (TransactionServiceBo) cxt.getBean("transactionServiceBo");
 		}
 		
-		if (this.categoryList == null) {
-			this.categoryList = getCategoryBo().list();
-		}
-
 		if (this.memberList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
@@ -255,14 +242,6 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 
 	public void setSettlement_date(Date settlement_date) {
 		this.settlement_date = settlement_date;
-	}
-
-	public CategoryBo getCategoryBo() {
-		return this.categoryBo;
-	}
-
-	public void setCategoryBo(CategoryBo categoryBo) {
-		this.categoryBo = categoryBo;
 	}
 
 	public List<Category> getCategoryList() {
