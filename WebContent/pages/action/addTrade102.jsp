@@ -98,13 +98,13 @@
 	<s:actionerror />
 	<s:actionmessage />
 	
-	<s:url id="memberurl" action="gridMember"/>
-	<s:url id="statementurl" action="subgridMemberStatement"/>
+	<s:url id="gridMemberSeniorityUrl" action="gridMemberSeniority"/>
+	<s:url id="subgridMemberSeniorityUrl" action="subgridMemberSeniority"/>
     <sjg:grid
         id="gridtable"
         caption='%{getText("member.detail")}'
         dataType="json"
-        href="%{memberurl}"
+        href="%{gridMemberSeniorityUrl}"
         pager="true"
         autowidth="true"
         navigator="true"
@@ -130,7 +130,7 @@
 		        id="subgridtable"
 		        caption='%{getText("statement.detail")}'
 		        dataType="json"
-		        href="%{statementurl}"
+		        href="%{subgridMemberSeniorityUrl}"
 		        pager="true"
 		        autowidth="true"
 		        navigator="true"

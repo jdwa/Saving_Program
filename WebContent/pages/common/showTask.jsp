@@ -83,8 +83,8 @@
 				<td><s:date name="creation_date" format="yyyy-MM-dd" /></td>
 				<td><s:property value="remark" /></td>
 				<td><s:property value="timestamp" /></td>
-				<td><a href="deleteStatement.action?id=<s:property value="id" />"><s:text name="submit.delete" /></a></td>
-				<td><a href="detailStatement.action?id=<s:property value="id" />"><s:text name="submit.detail" /></a></td>
+				<td><a href="deletePoint.action?id=<s:property value="id" />"><s:text name="submit.delete" /></a></td>
+				<td><a href="detailPoint.action?id=<s:property value="id" />"><s:text name="submit.detail" /></a></td>
 			</tr>
 		</s:iterator>
 	</table>	

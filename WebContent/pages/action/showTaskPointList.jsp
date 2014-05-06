@@ -65,7 +65,7 @@
 		<s:iterator value="pointList">
 			<tr>
 				<td><s:property value="id" /></td>
-				<td><s:property value="task.tx_no" /></td>
+				<td><s:property value="task.tk_no" /></td>
 				<td><s:property value="member.account" /></td>
 				<td><s:property value="company.cmp_description" /></td>
 				<td><s:property value="value" /></td>
