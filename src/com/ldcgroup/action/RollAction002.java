@@ -180,11 +180,11 @@ public class RollAction002 extends ActionSupport implements Preparable, SessionA
 				break;
 			}
 			
-			
+			/*--
 			for (int i = 0; i < data.length; i++) {
 				java.lang.System.out.println("Parsing data[" + i + "] ==> [" + data[i].trim() + "]");
 			}
-			
+			--*/
 			
 			double member_value = Double.parseDouble(data[9].trim());
 			String cmpStr = data[14].trim();
@@ -200,7 +200,7 @@ public class RollAction002 extends ActionSupport implements Preparable, SessionA
 			if (term == null) {
 				term = new Term();
 				term.setTerm_no(termNoStr);
-				term.setTerm_description(company.getCmp_description() + "-" + data[8].trim());
+				term.setTerm_description(data[8].trim() + "-" + company.getCmp_description());
 				term.setRemark(term.getTerm_description());
 				term.setTimestamp(getText("action.system.defaule") + ", " + getText("action.last.update") + "[" + now + "]");
 				term.setCreation_date(now);
