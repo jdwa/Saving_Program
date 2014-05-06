@@ -30,7 +30,7 @@
 				<result name="none">/pages/error.jsp</result>
 			</global-results>
 
-			<!-- Actions -->
+		<!-- Administration Actions -->
 			<action name="initializeChangeMemberPassword" class="com.ldcgroup.action.MemberPasswordChangeAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.action.changeMemberPassword.tiles</result>
@@ -56,215 +56,105 @@
 				<result name="input" type="tiles">pages.action.initializeData.tiles</result>
 				<result name="success" type="tiles">pages.action.loginMember.tiles</result>
 			</action>
-			
-			<!-- Trade & Statement -->
-			<action name="listMemberStatement" class="com.ldcgroup.action.MemberStatementListAction">
-				<result name="success" type="tiles">pages.action.showMemberStatementList.tiles</result>
-			</action>
-			<action name="listMemberStatementGrid" class="com.ldcgroup.action.MemberStatementGridAction">
-				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
-			</action>
-			<action name="gridMemberStatement" class="com.ldcgroup.action.MemberStatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridMember" class="com.ldcgroup.action.MemberGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						memberList\[\d+\]\.id,
-						memberList\[\d+\]\.account,
-						memberList\[\d+\]\.active,
-						memberList\[\d+\]\.accumulation,
-						memberList\[\d+\]\.company\.cmp_description,
-						memberList\[\d+\]\.role\.role_description,
-						memberList\[\d+\]\.creation_date,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="subgridMemberStatement" class="com.ldcgroup.action.MemberSubgridStatementAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridType001Statement" class="com.ldcgroup.action.Type001StatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridType002Statement" class="com.ldcgroup.action.Type002StatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridType003Statement" class="com.ldcgroup.action.Type003StatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridType004Statement" class="com.ldcgroup.action.Type004StatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>	
-			</action>
-			<action name="gridType005Statement" class="com.ldcgroup.action.Type005StatementGridAction">
-				<result name="success" type="json">
-					<param name="includeProperties">
-						statementList\[\d+\]\.id,
-						statementList\[\d+\]\.trade\.tx_no,
-						statementList\[\d+\]\.trade\.category\.category_description,
-						statementList\[\d+\]\.member\.account,
-						statementList\[\d+\]\.company\.cmp_description,
-						statementList\[\d+\]\.fund,
-						statementList\[\d+\]\.type\.type_description,
-						statementList\[\d+\]\.settlement_date,
-						statementList\[\d+\]\.creation_date,
-						statementList\[\d+\]\.remark,
-						statementList\[\d+\]\.timestamp,
-						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
-					</param>
-					<param name="noCache">true</param>
-					<param name="ignoreHierarchy">false</param>
-					<param name="contentType">text/html</param>
-				</result>					
-			</action>
-			<action name="initializeQueryTrade" class="com.ldcgroup.action.TradeActionQuery"
-				method="initialize">
-				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
-				<result name="success" type="tiles">pages.action.queryTrade.tiles</result>
-			</action>
-			<action name="queryTrade" class="com.ldcgroup.action.TradeActionQuery">
-				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
-				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
-			</action>	
-			<action name="initializeInvalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate"
-				method="initialize">
-				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
-				<result name="success" type="tiles">pages.action.invalidateTrade.tiles</result>
-			</action>
-			<action name="invalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate">
-				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
-				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+
+		<!-- Roll & Pay -->
+			<action name="listMemberPayRollGrid" class="com.ldcgroup.action.MemberPayRollGridAction">
+				<result name="success" type="tiles">pages.action.showMemberPayRollGrid.tiles</result>
 			</action>			
-			<action name="initializeQueryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction"
-				method="initialize">
-				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
-				<result name="success" type="tiles">pages.action.queryMemberStatement.tiles</result>
+			<action name="gridMemberSalary" class="com.ldcgroup.action.MemberSalaryGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						rollList\[\d+\]\.id,
+						rollList\[\d+\]\.ro_no,
+						rollList\[\d+\]\.company\.cmp_description,
+						rollList\[\d+\]\.value,
+						rollList\[\d+\]\.subvalue,
+						rollList\[\d+\]\.pay_date,
+						rollList\[\d+\]\.settlement_date,
+						rollList\[\d+\]\.creation_date,
+						rollList\[\d+\]\.remark,
+						rollList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
 			</action>
-			<action name="queryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction">
-				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
-				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			<action name="subgridMemberSalary" class="com.ldcgroup.action.MemberSalarySubgridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						payList\[\d+\]\.id,
+						payList\[\d+\]\.roll\.ro_no,
+						payList\[\d+\]\.member\.account,
+						payList\[\d+\]\.company\.cmp_description,
+						payList\[\d+\]\.value,
+						payList\[\d+\]\.term\.term_description,
+						payList\[\d+\]\.pay_date,
+						payList\[\d+\]\.settlement_date,
+						payList\[\d+\]\.creation_date,
+						payList\[\d+\]\.remark,
+						payList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridRollPay" class="com.ldcgroup.action.RollPayGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						payList\[\d+\]\.id,
+						payList\[\d+\]\.roll\.ro_no,
+						payList\[\d+\]\.member\.account,
+						payList\[\d+\]\.company\.cmp_description,
+						payList\[\d+\]\.value,
+						payList\[\d+\]\.term\.term_description,
+						payList\[\d+\]\.pay_date,
+						payList\[\d+\]\.settlement_date,
+						payList\[\d+\]\.creation_date,
+						payList\[\d+\]\.remark,
+						payList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>			
+			<action name="initializeQueryRoll" class="com.ldcgroup.action.RollActionQuery"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.queryRoll.tiles</result>
+			</action>
+			<action name="queryRoll" class="com.ldcgroup.action.RollActionQuery">
+				<result name="input" type="tiles">pages.action.queryRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.showRollPayGrid.tiles</result>
+			</action>	
+			<action name="initializeInvalidateRoll" class="com.ldcgroup.action.RollActionInvalidate"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.invalidateRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.invalidateRoll.tiles</result>
+			</action>
+			<action name="invalidateRoll" class="com.ldcgroup.action.RollActionInvalidate">
+				<result name="input" type="tiles">pages.action.invalidateRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.showRollPayGrid.tiles</result>
+			</action>			
+			<action name="initializeQueryMemberPayRoll" class="com.ldcgroup.action.MemberPayRollQueryAction"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryMemberPayRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.queryMemberPayRoll.tiles</result>
+			</action>							
+			<action name="queryMemberPayRoll" class="com.ldcgroup.action.MemberPayRollQueryAction">
+				<result name="input" type="tiles">pages.action.queryMemberPayRoll.tiles</result>
+				<result name="success" type="tiles">pages.action.showMemberPayRollGrid.tiles</result>
 			</action>
 			
-			<!-- Task & Point -->
+		<!-- Task & Point -->
 			<action name="listMemberPoint" class="com.ldcgroup.action.MemberPointListAction">
 				<result name="success" type="tiles">pages.action.showMemberPointList.tiles</result>
 			</action>
@@ -508,8 +398,235 @@
 				<result name="input" type="tiles">pages.action.queryMemberPoint.tiles</result>
 				<result name="success" type="tiles">pages.action.showMemberPointGrid.tiles</result>
 			</action>
-			
-			<!-- Task Actions -->
+
+		<!-- Trade & Statement -->
+			<action name="listMemberStatement" class="com.ldcgroup.action.MemberStatementListAction">
+				<result name="success" type="tiles">pages.action.showMemberStatementList.tiles</result>
+			</action>
+			<action name="listMemberStatementGrid" class="com.ldcgroup.action.MemberStatementGridAction">
+				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			</action>
+			<action name="gridMemberStatement" class="com.ldcgroup.action.MemberStatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridMemberSeniority" class="com.ldcgroup.action.MemberSeniorityGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						memberList\[\d+\]\.id,
+						memberList\[\d+\]\.account,
+						memberList\[\d+\]\.active,
+						memberList\[\d+\]\.accumulation,
+						memberList\[\d+\]\.company\.cmp_description,
+						memberList\[\d+\]\.role\.role_description,
+						memberList\[\d+\]\.creation_date,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="subgridMemberSeniority" class="com.ldcgroup.action.MemberSenioritySubgridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType001Statement" class="com.ldcgroup.action.Type001StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType002Statement" class="com.ldcgroup.action.Type002StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType003Statement" class="com.ldcgroup.action.Type003StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType004Statement" class="com.ldcgroup.action.Type004StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>	
+			</action>
+			<action name="gridType005Statement" class="com.ldcgroup.action.Type005StatementGridAction">
+				<result name="success" type="json">
+					<param name="includeProperties">
+						statementList\[\d+\]\.id,
+						statementList\[\d+\]\.trade\.tx_no,
+						statementList\[\d+\]\.trade\.category\.category_description,
+						statementList\[\d+\]\.member\.account,
+						statementList\[\d+\]\.company\.cmp_description,
+						statementList\[\d+\]\.fund,
+						statementList\[\d+\]\.type\.type_description,
+						statementList\[\d+\]\.settlement_date,
+						statementList\[\d+\]\.creation_date,
+						statementList\[\d+\]\.remark,
+						statementList\[\d+\]\.timestamp,
+						userdata.*,
+						rows,page,total,record,sord,sidx,search,filters
+					</param>
+					<param name="noCache">true</param>
+					<param name="ignoreHierarchy">false</param>
+					<param name="contentType">text/html</param>
+				</result>					
+			</action>
+			<action name="initializeQueryTrade" class="com.ldcgroup.action.TradeActionQuery"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.queryTrade.tiles</result>
+			</action>
+			<action name="queryTrade" class="com.ldcgroup.action.TradeActionQuery">
+				<result name="input" type="tiles">pages.action.queryTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>	
+			<action name="initializeInvalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.invalidateTrade.tiles</result>
+			</action>
+			<action name="invalidateTrade" class="com.ldcgroup.action.TradeActionInvalidate">
+				<result name="input" type="tiles">pages.action.invalidateTrade.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>			
+			<action name="initializeQueryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
+				<result name="success" type="tiles">pages.action.queryMemberStatement.tiles</result>
+			</action>
+			<action name="queryMemberStatement" class="com.ldcgroup.action.MemberStatementQueryAction">
+				<result name="input" type="tiles">pages.action.queryMemberStatement.tiles</result>
+				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
+			</action>
+						
+		<!-- Roll Actions -->
+			<action name="initializeRoll001" class="com.ldcgroup.action.RollAction001"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addRoll001.tiles</result>
+				<result name="success" type="tiles">pages.action.addRoll001.tiles</result>
+			</action>
+			<action name="addRoll001" class="com.ldcgroup.action.RollAction001">
+				<result name="input" type="tiles">pages.action.addRoll001.tiles</result>
+				<result name="success" type="tiles">pages.action.showRollPayGrid.tiles</result>
+			</action>
+			<action name="initializeRoll002" class="com.ldcgroup.action.RollAction002"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addRoll002.tiles</result>
+				<result name="success" type="tiles">pages.action.addRoll002.tiles</result>
+			</action>
+			<action name="addRoll002" class="com.ldcgroup.action.RollAction002">
+				<result name="input" type="tiles">pages.action.addRoll002.tiles</result>
+				<result name="success" type="tiles">pages.action.showRollPayGrid.tiles</result>
+			</action>
+						
+		<!-- Task Actions -->
 			<action name="initializeTask001" class="com.ldcgroup.action.TaskAction001"
 				method="initialize">
 				<result name="input" type="tiles">pages.action.addTask001.tiles</result>
@@ -529,7 +646,7 @@
 				<result name="success" type="tiles">pages.action.showTaskPointGrid.tiles</result>
 			</action>
 						
-			<!-- Trade Actions -->
+		<!-- Trade Actions -->
 			<action name="initializeTrade001" class="com.ldcgroup.action.TradeAction001"
 				method="initialize">
 				<result name="input" type="tiles">pages.action.addTrade001.tiles</result>
@@ -648,7 +765,7 @@
 				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
 			</action>
 			
-			<!-- Category -->
+		<!-- Category -->
 			<action name="initializeCategory" class="com.ldcgroup.common.CategoryAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addCategory.tiles</result>
@@ -676,7 +793,7 @@
 				<result name="success" type="tiles">pages.common.showCategory.tiles</result>
 			</action>
 
-			<!-- Company -->
+		<!-- Company -->
 			<action name="initializeCompany" class="com.ldcgroup.common.CompanyAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addCompany.tiles</result>
@@ -704,7 +821,7 @@
 				<result name="success" type="tiles">pages.common.showCompany.tiles</result>
 			</action>
 
-			<!-- Item -->
+		<!-- Item -->
 			<action name="initializeItem" class="com.ldcgroup.common.ItemAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addItem.tiles</result>
@@ -731,8 +848,8 @@
 				<result name="input" type="tiles">pages.common.detailItem.tiles</result>
 				<result name="success" type="tiles">pages.common.showItem.tiles</result>
 			</action>
-			
-			<!-- Member -->
+
+		<!-- Member -->
 			<action name="initializeMember" class="com.ldcgroup.common.MemberAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addMember.tiles</result>
@@ -760,7 +877,35 @@
 				<result name="success" type="tiles">pages.common.showMember.tiles</result>
 			</action>
 
-			<!-- Point -->
+		<!-- Pay -->
+			<action name="initializePay" class="com.ldcgroup.common.PayAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addPay.tiles</result>
+			</action>
+			<action name="addPay" class="com.ldcgroup.common.PayAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addPay.tiles</result>
+				<result name="success" type="tiles">pages.common.showPay.tiles</result>
+			</action>
+			<action name="listPay" class="com.ldcgroup.common.PayAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showPay.tiles</result>
+			</action>
+			<action name="deletePay" class="com.ldcgroup.common.PayAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showPay.tiles</result>
+			</action>
+			<action name="detailPay" class="com.ldcgroup.common.PayAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailPay.tiles</result>
+			</action>
+			<action name="updatePay" class="com.ldcgroup.common.PayAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailPay.tiles</result>
+				<result name="success" type="tiles">pages.common.showPay.tiles</result>
+			</action>
+
+		<!-- Point -->
 			<action name="initializePoint" class="com.ldcgroup.common.PointAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addPoint.tiles</result>
@@ -788,7 +933,7 @@
 				<result name="success" type="tiles">pages.common.showPoint.tiles</result>
 			</action>
 			
-			<!-- Rate -->
+		<!-- Rate -->
 			<action name="initializeRate" class="com.ldcgroup.common.RateAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addRate.tiles</result>
@@ -816,7 +961,7 @@
 				<result name="success" type="tiles">pages.common.showRate.tiles</result>
 			</action>
 
-			<!-- Role -->
+		<!-- Role -->
 			<action name="initializeRole" class="com.ldcgroup.common.RoleAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addRole.tiles</result>
@@ -844,7 +989,35 @@
 				<result name="success" type="tiles">pages.common.showRole.tiles</result>
 			</action>
 
-			<!-- Statement -->
+		<!-- Roll -->
+			<action name="initializeRoll" class="com.ldcgroup.common.RollAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addRoll.tiles</result>
+			</action>
+			<action name="addRoll" class="com.ldcgroup.common.RollAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addRoll.tiles</result>
+				<result name="success" type="tiles">pages.common.showRoll.tiles</result>
+			</action>
+			<action name="listRoll" class="com.ldcgroup.common.RollAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showRollList.tiles</result>
+			</action>
+			<action name="deleteRoll" class="com.ldcgroup.common.RollAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showRoll.tiles</result>
+			</action>
+			<action name="detailRoll" class="com.ldcgroup.common.RollAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailRoll.tiles</result>
+			</action>
+			<action name="updateRoll" class="com.ldcgroup.common.RollAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailRoll.tiles</result>
+				<result name="success" type="tiles">pages.common.showRoll.tiles</result>
+			</action>
+
+		<!-- Statement -->
 			<action name="initializeStatement" class="com.ldcgroup.common.StatementAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addStatement.tiles</result>
@@ -872,35 +1045,7 @@
 				<result name="success" type="tiles">pages.common.showStatement.tiles</result>
 			</action>
 
-			<!-- Type -->
-			<action name="initializeType" class="com.ldcgroup.common.TypeAction"
-				method="initialize">
-				<result name="success" type="tiles">pages.common.addType.tiles</result>
-			</action>
-			<action name="addType" class="com.ldcgroup.common.TypeAction"
-				method="add">
-				<result name="input" type="tiles">pages.common.addType.tiles</result>
-				<result name="success" type="tiles">pages.common.showType.tiles</result>
-			</action>
-			<action name="listType" class="com.ldcgroup.common.TypeAction"
-				method="list">
-				<result name="success" type="tiles">pages.common.showType.tiles</result>
-			</action>
-			<action name="deleteType" class="com.ldcgroup.common.TypeAction"
-				method="delete">
-				<result name="success" type="tiles">pages.common.showType.tiles</result>
-			</action>
-			<action name="detailType" class="com.ldcgroup.common.TypeAction"
-				method="detail">
-				<result name="success" type="tiles">pages.common.detailType.tiles</result>
-			</action>
-			<action name="updateType" class="com.ldcgroup.common.TypeAction"
-				method="update">
-				<result name="input" type="tiles">pages.common.detailType.tiles</result>
-				<result name="success" type="tiles">pages.common.showType.tiles</result>
-			</action>
-
-			<!-- Task -->
+		<!-- Task -->
 			<action name="initializeTask" class="com.ldcgroup.common.TaskAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addTask.tiles</result>
@@ -928,7 +1073,63 @@
 				<result name="success" type="tiles">pages.common.showTask.tiles</result>
 			</action>
 			
-			<!-- Trade -->
+		<!-- Term -->
+			<action name="initializeTerm" class="com.ldcgroup.common.TermAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addTerm.tiles</result>
+			</action>
+			<action name="addTerm" class="com.ldcgroup.common.TermAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addTerm.tiles</result>
+				<result name="success" type="tiles">pages.common.showTerm.tiles</result>
+			</action>
+			<action name="listTerm" class="com.ldcgroup.common.TermAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showTerm.tiles</result>
+			</action>
+			<action name="deleteTerm" class="com.ldcgroup.common.TermAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showTerm.tiles</result>
+			</action>
+			<action name="detailTerm" class="com.ldcgroup.common.TermAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailTerm.tiles</result>
+			</action>
+			<action name="updateTerm" class="com.ldcgroup.common.TermAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailTerm.tiles</result>
+				<result name="success" type="tiles">pages.common.showTerm.tiles</result>
+			</action>
+			
+		<!-- Type -->
+			<action name="initializeType" class="com.ldcgroup.common.TypeAction"
+				method="initialize">
+				<result name="success" type="tiles">pages.common.addType.tiles</result>
+			</action>
+			<action name="addType" class="com.ldcgroup.common.TypeAction"
+				method="add">
+				<result name="input" type="tiles">pages.common.addType.tiles</result>
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="listType" class="com.ldcgroup.common.TypeAction"
+				method="list">
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="deleteType" class="com.ldcgroup.common.TypeAction"
+				method="delete">
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+			<action name="detailType" class="com.ldcgroup.common.TypeAction"
+				method="detail">
+				<result name="success" type="tiles">pages.common.detailType.tiles</result>
+			</action>
+			<action name="updateType" class="com.ldcgroup.common.TypeAction"
+				method="update">
+				<result name="input" type="tiles">pages.common.detailType.tiles</result>
+				<result name="success" type="tiles">pages.common.showType.tiles</result>
+			</action>
+
+		<!-- Trade -->
 			<action name="initializeTrade" class="com.ldcgroup.common.TradeAction"
 				method="initialize">
 				<result name="success" type="tiles">pages.common.addTrade.tiles</result>
