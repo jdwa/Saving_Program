@@ -58,7 +58,7 @@ public class TradeAction102 extends ActionSupport implements Preparable, Session
 	}
 
 	@Override
-	public void prepare() throws Exception {		
+	public void prepare() throws Exception {
 		if (this.propertyBean == null) {
 			WebApplicationContext cxt = WebApplicationContextUtils
 					.getRequiredWebApplicationContext(ServletActionContext

@@ -171,7 +171,7 @@ public class TradeAction002 extends ActionSupport implements Preparable, Session
 
 		List<Member> members = new ArrayList<Member>();
 		List<Statement> statements = new ArrayList<Statement>();
-		List<String> lines = FileUtils.readLines(fileUpload);
+		List<String> lines = FileUtils.readLines(fileUpload, "UTF-8");
 		double type001Sum = 0; // 員工提撥 "001"
 		double type002Sum = 0; // 公司提撥 "002"
 		// double type003Sum = 0; // 紅利分配 "003"
@@ -182,7 +182,10 @@ public class TradeAction002 extends ActionSupport implements Preparable, Session
 			String line = (String)lines.get(idx);
 			String[] data = line.split("\t");
 			
-			if (data.length < 11) {
+			if (data.length == 0) {
+				// Blank line.
+				continue;
+			} else if (data.length < 11) {
 				addActionError("[" + line + "]" + getText("data.format.error"));
 				statements.clear();
 				break;

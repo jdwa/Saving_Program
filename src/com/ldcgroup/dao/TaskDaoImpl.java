@@ -63,13 +63,13 @@ public class TaskDaoImpl extends HibernateDaoSupport implements TaskDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Task> list(Company company) {
-		return (List<Task>) getHibernateTemplate().find("from Task e where e.company.id = ?", company.getId());
+		return (List<Task>) getHibernateTemplate().find("from Task T where T.company.id = ?", company.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Task> listValidate() {
-		return (List<Task>) getHibernateTemplate().find("from Task e where e.valid = ?", Boolean.TRUE);
+		return (List<Task>) getHibernateTemplate().find("from Task T where T.valid = ?", Boolean.TRUE);
 	}
 }

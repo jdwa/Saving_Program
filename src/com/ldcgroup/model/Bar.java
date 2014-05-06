@@ -25,6 +25,17 @@ public class Bar implements Serializable {
 	private Double value_item_008 = 0.0; // stacked value of item 008
 	private Double value_item_101 = 0.0; // stacked value of item 101
 
+	// For Roll & Value
+	private Double value_term_001 = 0.0; // stacked value of term 001
+	private Double value_term_002 = 0.0; // stacked value of term 002
+	private Double value_term_003 = 0.0; // stacked value of term 003
+	private Double value_term_004 = 0.0; // stacked value of term 004
+	private Double value_term_005 = 0.0; // stacked value of term 005
+	private Double value_term_006 = 0.0; // stacked value of term 006
+	private Double value_term_007 = 0.0; // stacked value of term 007
+	private Double value_term_008 = 0.0; // stacked value of term 008
+	private Double value_term_101 = 0.0; // stacked value of term 101
+	
 	private Long time;
 
 	public String getLabel() {
@@ -136,5 +147,59 @@ public class Bar implements Serializable {
 	}
 	public void setValue_item_101(Double value_item_101) {
 		this.value_item_101 = value_item_101;
+	}
+	public Double getValue_term_001() {
+		return value_term_001;
+	}
+	public void setValue_term_001(Double value_term_001) {
+		this.value_term_001 = value_term_001;
+	}
+	public Double getValue_term_002() {
+		return value_term_002;
+	}
+	public void setValue_term_002(Double value_term_002) {
+		this.value_term_002 = value_term_002;
+	}
+	public Double getValue_term_003() {
+		return value_term_003;
+	}
+	public void setValue_term_003(Double value_term_003) {
+		this.value_term_003 = value_term_003;
+	}
+	public Double getValue_term_004() {
+		return value_term_004;
+	}
+	public void setValue_term_004(Double value_term_004) {
+		this.value_term_004 = value_term_004;
+	}
+	public Double getValue_term_005() {
+		return value_term_005;
+	}
+	public void setValue_term_005(Double value_term_005) {
+		this.value_term_005 = value_term_005;
+	}
+	public Double getValue_term_006() {
+		return value_term_006;
+	}
+	public void setValue_term_006(Double value_term_006) {
+		this.value_term_006 = value_term_006;
+	}
+	public Double getValue_term_007() {
+		return value_term_007;
+	}
+	public void setValue_term_007(Double value_term_007) {
+		this.value_term_007 = value_term_007;
+	}
+	public Double getValue_term_008() {
+		return value_term_008;
+	}
+	public void setValue_term_008(Double value_term_008) {
+		this.value_term_008 = value_term_008;
+	}
+	public Double getValue_term_101() {
+		return value_term_101;
+	}
+	public void setValue_term_101(Double value_term_101) {
+		this.value_term_101 = value_term_101;
 	}
 }

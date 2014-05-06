@@ -59,28 +59,28 @@ public class PointDaoImpl extends HibernateDaoSupport implements PointDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Member member) {
-		return (List<Point>) getHibernateTemplate().find("from Point S where S.member.id = ?", member.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.member.id = ?", member.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Task task) {
-		return (List<Point>) getHibernateTemplate().find("from Point S where S.task.id = ?", task.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ?", task.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Task task, Item item) {
-		return (List<Point>) getHibernateTemplate().find("from Point S where S.task.id = ? and S.item.id = ?", task.getId(), item.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ? and P.item.id = ?", task.getId(), item.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Item item) {
-		return (List<Point>) getHibernateTemplate().find("from Point S where S.item.id = ?", item.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.item.id = ?", item.getId());
 	}
 
 	@Override

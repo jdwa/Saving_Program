@@ -157,14 +157,17 @@ public class TaskAction002 extends ActionSupport implements Preparable, SessionA
 
 		List<Member> members = new ArrayList<Member>();
 		List<Point> points = new ArrayList<Point>();
-		List<String> lines = FileUtils.readLines(fileUpload);
+		List<String> lines = FileUtils.readLines(fileUpload, "UTF-8");
 		double itemSum = 0; // 明日之星 "001" 技藝之星 "002" 三度之星 "003" 伯樂之星 "004" 創意之星-提案 "005" 創意之星-圓夢 "006" 雲朗之星"007" 其他"008" 兌換點數 "101"
 		// Do not parse the 1st line (for header).
 		for (int idx = 1; idx < lines.size(); idx++) {
 			String line = (String)lines.get(idx);
-			String[] data = line.split("\t");
+			String[] data = line.trim().split("\t");
 			
-			if (data.length < 6) {
+			if (data.length == 0) {
+				// Blank line.
+				continue;
+			} else if (data.length < 6) {
 				addActionError("[" + line + "]" + getText("data.format.error"));
 				points.clear();
 				break;

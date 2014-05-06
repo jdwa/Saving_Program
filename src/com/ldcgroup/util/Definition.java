@@ -28,7 +28,7 @@ public class Definition {
 		
 	public static final String HQ_REMAIN = "HQ_REMAIN"; // 只有總公司有『重新分配』帳號
 	/*
-	public static final String SML_REMAIN = "ZH_REMAIN";
+	public static final String ZH_REMAIN = "ZH_REMAIN";
 	public static final String SML_REMAIN = "SML_REMAIN";
 	public static final String HL_REMAIN = "HL_REMAIN";
 	public static final String KH_REMAIN = "KH_REMAIN";
