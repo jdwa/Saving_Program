@@ -27,6 +27,22 @@
 	<s:actionmessage />
 	-->
 	<sj:accordion id="accordion" heightStyle="content" animate="true" collapsible="true">
+		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
+			<s:set name="menu.system.operation.salary.program"><s:text name="menu.system.operation.salary.program" /></s:set>
+			<sj:accordionItem title="%{menu.system.operation.salary.program}">
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER')">	
+					<sj:div><a href="initializeRoll001.action"><s:text name="action.roll.001" /></a></sj:div>		
+					<sj:div><a href="initializeRoll002.action"><s:text name="action.roll.002" /></a></sj:div>					
+					<sj:div><a href="initializeInvalidateRoll.action"><s:text name="roll.action.invalidate" /></a></sj:div>
+					<sj:div><a href="initializeQueryRoll.action"><s:text name="roll.action.query" /></a></sj:div>
+					<sj:div><a href="initializeQueryMemberPayRoll.action"><s:text name="member.action.query.pay.roll" /></a></sj:div>
+				</security:authorize>
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
+					<sj:div><a href="listMemberPayRollGrid.action"><s:text name="pay.roll.grid.member" /></a></sj:div>	
+				</security:authorize>
+			</sj:accordionItem>
+		</security:authorize>
+
 		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
 			<s:set name="menu.system.operation.saving.program"><s:text name="menu.system.operation.saving.program" /></s:set>
 			<sj:accordionItem title="%{menu.system.operation.saving.program}">
@@ -55,22 +71,6 @@
 				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">	
 					<sj:div><a href="listMemberStatementGrid.action"><s:text name="statement.grid.member" /></a></sj:div>					
 					<sj:div><a href="listMemberStatement.action"><s:text name="statement.list.member" /></a></sj:div>
-				</security:authorize>
-			</sj:accordionItem>
-		</security:authorize>
-
-		<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
-			<s:set name="menu.system.operation.salary.program"><s:text name="menu.system.operation.salary.program" /></s:set>
-			<sj:accordionItem title="%{menu.system.operation.salary.program}">
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER')">	
-					<sj:div><a href="initializeRoll001.action"><s:text name="action.roll.001" /></a></sj:div>		
-					<sj:div><a href="initializeRoll002.action"><s:text name="action.roll.002" /></a></sj:div>					
-					<sj:div><a href="initializeInvalidateRoll.action"><s:text name="roll.action.invalidate" /></a></sj:div>
-					<sj:div><a href="initializeQueryRoll.action"><s:text name="roll.action.query" /></a></sj:div>
-					<sj:div><a href="initializeQueryMemberPayRoll.action"><s:text name="member.action.query.pay.roll" /></a></sj:div>
-				</security:authorize>
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">
-					<sj:div><a href="listMemberPayRollGrid.action"><s:text name="pay.roll.grid.member" /></a></sj:div>	
 				</security:authorize>
 			</sj:accordionItem>
 		</security:authorize>
