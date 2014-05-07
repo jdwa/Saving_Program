@@ -220,9 +220,14 @@ public class TaskAction002 extends ActionSupport implements Preparable, SessionA
 				members.add(member);
 				//getMemberBo().add(member);	
 			} else if (!member.getCompany().getCmp_no().equals(company.getCmp_no())) {
-				addActionError("[" + data[2].trim() + "]" + getText("member.not.belong.this.company") + "[" + company.getCmp_description() + "]");
+				addActionMessage("[" + account + "]" + getText("member.assign.to.company") + "[" + company.getCmp_description() + "]");
+				member.setCompany(company);
+				getMemberBo().update(member);
+				/*--
+				addActionError("[" + account + "]" + getText("member.not.belong.this.company") + "[" + company.getCmp_description() + "]");
 				points.clear();
 				break;
+				--*/
 			}
 			
 			if ((member != null) && (member.getRole().getRole_code().equals(Definition.ROLE_NORMAL))) {
