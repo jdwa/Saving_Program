@@ -60,7 +60,8 @@ public class TaskActionQuery extends ActionSupport implements Preparable, Sessio
 		if (this.taskList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
+					|| (member.getRole().getRole_code().equals(Definition.ROLE_TRAINER) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {											
 					this.taskList = getTaskBo().list();
 				} else {
 					this.taskList = getTaskBo().list(member.getCompany());

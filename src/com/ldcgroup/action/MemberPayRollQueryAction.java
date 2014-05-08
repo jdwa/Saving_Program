@@ -52,8 +52,7 @@ public class MemberPayRollQueryAction extends ActionSupport implements Preparabl
 		if (this.memberList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
-					|| (member.getRole().getRole_code().equals(Definition.ROLE_TRAINER) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {											
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {
 					this.memberList = getMemberBo().list();
 				} else {
 					this.memberList = getMemberBo().list(member.getCompany());

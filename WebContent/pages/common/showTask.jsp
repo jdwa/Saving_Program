@@ -30,7 +30,7 @@
 			<th><s:text name="task.creation_date" /></th>
 			<th><s:text name="task.remark" /></th>
 			<th><s:text name="task.timestamp" /></th>
-			<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+			<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
 				<th><s:text name="submit.delete" /></th>
 			</security:authorize>	
 			<th><s:text name="submit.detail" /></th>
@@ -46,7 +46,7 @@
 				<td><s:date name="creation_date" format="yyyy-MM-dd" /></td>
 				<td><s:property value="remark" /></td>
 				<td><s:property value="timestamp" /></td>
-				<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">
 					<td><a href="deleteTask.action?id=<s:property value="id" />"><s:text name="submit.delete" /></a></td>
 				</security:authorize>	
 				<td><a href="detailTask.action?id=<s:property value="id" />"><s:text name="submit.detail" /></a></td>

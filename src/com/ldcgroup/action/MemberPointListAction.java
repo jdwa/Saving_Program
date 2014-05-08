@@ -112,8 +112,8 @@ public class MemberPointListAction extends ActionSupport implements Preparable, 
 	@Override
 	public String execute() throws Exception {
 		String returnValue = ERROR;
-		if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
-			Member member = (Member) this.session.get("CurrentMember");
+		if ((this.session != null) && (this.session.get("S_Member") != null)) {
+			Member member = (Member) this.session.get("S_Member");
 			this.pointList = this.pointBo.list(member);
 
 			Calendar calendar = Calendar.getInstance();
