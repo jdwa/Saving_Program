@@ -125,7 +125,7 @@
 					<sj:div><a href="listPoint.action"><s:text name="point.list.all" /></a></sj:div>
 					<sj:div><a href="initializeTask.action"><s:text name="task.add" /></a></sj:div>
 				</security:authorize>	
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')">	
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR', 'ROLE_TRAINER')">	
 					<sj:div><a href="listTask.action"><s:text name="task.list.all" /></a></sj:div>
 				</security:authorize>	
 				<security:authorize access="hasAnyRole('ROLE_ADMIN')">	
