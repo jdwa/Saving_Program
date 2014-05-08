@@ -93,7 +93,8 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 		if (this.memberList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN) 
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
+					|| (member.getRole().getRole_code().equals(Definition.ROLE_HR) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))	
 					|| (member.getRole().getRole_code().equals(Definition.ROLE_TRAINER) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {											
 					this.memberList = getMemberBo().listNormal();
 				} else {

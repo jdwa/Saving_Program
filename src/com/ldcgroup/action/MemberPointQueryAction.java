@@ -53,6 +53,7 @@ public class MemberPointQueryAction extends ActionSupport implements Preparable,
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
 				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
+					|| (member.getRole().getRole_code().equals(Definition.ROLE_HR) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))	
 					|| (member.getRole().getRole_code().equals(Definition.ROLE_TRAINER) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {											
 					this.memberList = getMemberBo().list();
 				} else {

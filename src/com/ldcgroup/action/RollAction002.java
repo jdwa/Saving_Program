@@ -116,8 +116,7 @@ public class RollAction002 extends ActionSupport implements Preparable, SessionA
 		if (this.memberList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
-					|| (member.getRole().getRole_code().equals(Definition.ROLE_TRAINER) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {											
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {
 					this.memberList = getMemberBo().listNormal();
 				} else {
 					this.memberList = getMemberBo().listNormal(member.getCompany());
