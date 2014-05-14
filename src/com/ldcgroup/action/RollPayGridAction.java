@@ -2,7 +2,6 @@ package com.ldcgroup.action;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -80,43 +79,18 @@ public class RollPayGridAction extends ActionSupport implements Preparable, Sess
 		String returnValue = ERROR;
 		
 		Roll roll = (Roll) this.session.get("S_Roll");
-
+		
 		if (roll != null) { 
 			List<Pay> termPayList = this.payBo.list(roll);
 	
 			// Check for search operation
-			if (getSearchField() != null) {
+			if (this.searchField != null) {
+				PayComparator payComparator = new PayComparator();				
 				for (int i = 0; i < termPayList.size(); i++) {
 					Pay pay = termPayList.get(i);
-					String[] fieldList = {"id","roll.ro_no","member.account","company.cmp_description",
-										  "value","settlement_date","creation_date",
-										  "remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {pay.getId().toString(), pay.getRoll().getRo_no(),
-										  pay.getMember().getAccount(), pay.getCompany().getCmp_description(),
-										  pay.getValue().toString(), sdf.format(pay.getSettlement_date()), sdf.format(pay.getCreation_date()),
-										  pay.getRemark(), pay.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.payList.add(pay);
-								}
-							}
-						}
-					}
+					if (payComparator.isMatch(pay, this.searchField, this.searchOper, this.searchString)) {
+						this.payList.add(pay);
+					}				
 				}
 			} else {
 				this.payList.addAll(termPayList);
@@ -131,6 +105,13 @@ public class RollPayGridAction extends ActionSupport implements Preparable, Sess
 					Collections.reverse(payList);
 				}
 			}
+			
+			double grandTotal = 0;
+			for (int i = 0; i < payList.size(); i++) {
+				Pay pay = payList.get(i);
+				grandTotal += pay.getValue();
+			}
+			
 			Object totalCount = payList.size();
 			this.record = Integer.valueOf(Integer.parseInt((totalCount == null) ? "0" : totalCount.toString()));
 			this.total = Integer.valueOf((int) Math.ceil(this.record.doubleValue() / this.rows.doubleValue()));
@@ -149,7 +130,7 @@ public class RollPayGridAction extends ActionSupport implements Preparable, Sess
 			userdata.put("company.cmp_description", "Sub Total:");
 			userdata.put("value", total);
 			userdata.put("settlement_date", "Grand Total:");
-			userdata.put("creation_date", formatter.format(payBo.getPaySum(roll)));
+			userdata.put("creation_date", formatter.format(grandTotal));
 
 			returnValue = SUCCESS;
 		} else {

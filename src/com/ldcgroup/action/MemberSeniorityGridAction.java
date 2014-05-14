@@ -1,6 +1,5 @@
 package com.ldcgroup.action;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -150,36 +149,13 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 			
 			this.memberList.clear();
 			// Check for search operation
-			if (getSearchField() != null) {
+			if (getSearchField() != null) {				
+				MemberComparator memberComparator = new MemberComparator();				
 				for (int i = 0; i < memberNormalList.size(); i++) {
-					member = memberNormalList.get(i);					
-					String[] fieldList = {"id","active","accumulation","account","company.cmp_description","role.role_description",
-										  "creation_date","remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {member.getId().toString(), member.getActive().toString(), member.getAccumulation().toString(), member.getAccount(),
-										  member.getCompany().getCmp_description(), member.getRole().getRole_description(),
-										  sdf.format(member.getCreation_date()),member.getRemark(), member.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.memberList.add(member);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.memberList.add(member);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.memberList.add(member);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.memberList.add(member);
-								}
-							}
-						}
-					}
+					member = memberNormalList.get(i);
+					if (memberComparator.isMatch(member, this.searchField, this.searchOper, this.searchString)) {
+						this.memberList.add(member);
+					}				
 				}
 			} else {
 				this.memberList.addAll(memberNormalList);

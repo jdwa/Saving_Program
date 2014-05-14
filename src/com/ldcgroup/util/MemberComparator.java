@@ -1,24 +1,22 @@
 package com.ldcgroup.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 
 import com.ldcgroup.model.Member;
 
 public class MemberComparator implements Comparator<Member> {
 
-	public static int SORT_BY_ID = 0;
-	public static int SORT_BY_ACTIVE = 1;
-	public static int SORT_BY_ACCUMULATION = 2;
-	public static int SORT_BY_ACCOUNT = 3;
-	public static int SORT_BY_COMPANY = 4;
-	public static int SORT_BY_ROLE = 5;
-	public static int SORT_BY_DATE = 6;
-	public static int SORT_BY_REMARK = 7;
-	public static int SORT_BY_TIMESTAMP = 8;
-	private int sidx;	
+	private int sidx;
+	private String searchField;
+	private String searchOper;
+	private String searchString;
+	
+	private String[] fieldList = {"id","active","accumulation","account","company.cmp_description",
+								  "role.role_description","creation_date","remark","timestamp"};
 	
 	public MemberComparator(){
-		this.sidx = SORT_BY_ID;
+		this.sidx = 0;
 	}
 	
 	public MemberComparator(int sidx){
@@ -26,24 +24,12 @@ public class MemberComparator implements Comparator<Member> {
 	}
 	
 	public MemberComparator(String sidxString) {
-		if ("id".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_ID;
-		} else if ("active".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_ACTIVE;
-		} else if ("accumulation".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_ACCUMULATION;
-		} else if ("account".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_ACCOUNT;
-		} else if ("company.cmp_description".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_COMPANY;
-		} else if ("role.role_description".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_ROLE;
-		} else if ("creation_date".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_DATE;
-		} else if ("remark".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_REMARK;	
-		} else if ("timestamp".equalsIgnoreCase(sidxString)) {
-			this.sidx = SORT_BY_TIMESTAMP;	
+		this.sidx = 0;
+		for (int j = 0; j < fieldList.length; j++) {
+			if (fieldList[j].equalsIgnoreCase(sidxString)) {
+				this.sidx = j;
+				break;
+			}
 		}
 	}
 	
@@ -98,6 +84,189 @@ public class MemberComparator implements Comparator<Member> {
 		return result;
 	}
 
+	public boolean isMatch(Member member, String searchField, String searchOper, String searchString) {
+		this.searchField = searchField;
+		this.searchOper = searchOper;
+		this.searchString = searchString;
+		boolean result = false;
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Object[] valueList = {member.getId(), member.getActive().toString(), member.getAccumulation(), member.getAccount(),
+						  member.getCompany().getCmp_description(), member.getRole().getRole_description(),
+						  sdf.format(member.getCreation_date()),member.getRemark(), member.getTimestamp()};
+		for (int j = 0; j < fieldList.length; j++) {
+			if (getSearchField().equals(fieldList[j])) {
+				if (getSearchOper() != null && getSearchOper().equals("eq")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() == Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() == Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (valueList[j].toString().equals(getSearchString())) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() != Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() != Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (!valueList[j].toString().equals(getSearchString())) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() < Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() < Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (valueList[j].toString().compareTo(getSearchString()) < 0) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("le")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() <= Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() <= Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (valueList[j].toString().compareTo(getSearchString()) <= 0) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() > Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() > Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (valueList[j].toString().compareTo(getSearchString()) > 0) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("ge")) {
+					if (valueList[j] instanceof Long) {
+						try {
+							if (((Long)valueList[j]).longValue() >= Long.parseLong(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else if (valueList[j] instanceof Double) {
+						try {
+							if (((Double)valueList[j]).doubleValue() >= Double.parseDouble(getSearchString())) {
+								result = true;
+							}
+						} catch (NumberFormatException e) {
+							result = false;
+						}
+					} else {
+						if (valueList[j].toString().compareTo(getSearchString()) >= 0) {
+							result = true;
+						}
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("bw")) {
+					if (valueList[j].toString().startsWith(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("bn")) {
+					if (!valueList[j].toString().startsWith(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("in")) {
+					if (valueList[j].toString().matches(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("ni")) {
+					if (!valueList[j].toString().matches(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("ew")) {
+					if (valueList[j].toString().endsWith(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("en")) {
+					if (!valueList[j].toString().endsWith(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("cn")) {
+					if (valueList[j].toString().contains(getSearchString())) {
+						result = true;
+					}
+				} else if (getSearchOper() != null && getSearchOper().equals("nc")) {
+					if (!valueList[j].toString().contains(getSearchString())) {
+						result = true;
+					}
+				}
+			}
+		}
+		
+		return result;
+	}
+	
 	public int getSidx() {
 		return sidx;
 	}
@@ -106,4 +275,28 @@ public class MemberComparator implements Comparator<Member> {
 		this.sidx = sidx;
 	}
 
+	public String getSearchField() {
+		return searchField;
+	}
+
+	public void setSearchField(String searchField) {
+		this.searchField = searchField;
+	}
+
+	public String getSearchOper() {
+		return searchOper;
+	}
+
+	public void setSearchOper(String searchOper) {
+		this.searchOper = searchOper;
+	}
+
+	public String getSearchString() {
+		return searchString;
+	}
+
+	public void setSearchString(String searchString) {
+		this.searchString = searchString;
+	}
+	
 }

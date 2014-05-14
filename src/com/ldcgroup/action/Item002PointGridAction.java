@@ -2,7 +2,6 @@ package com.ldcgroup.action;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -88,38 +87,12 @@ public class Item002PointGridAction extends ActionSupport implements Preparable,
 	
 			// Check for search operation
 			if (getSearchField() != null) {
+				PointComparator pointComparator = new PointComparator();				
 				for (int i = 0; i < itemPointList.size(); i++) {
 					Point point = itemPointList.get(i);
-					String[] fieldList = {"id","task.tk_no","member.account","company.cmp_description",
-										  "value","item.item_description","settlement_date","creation_date",
-										  "remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {point.getId().toString(), point.getTask().getTk_no(),
-										  point.getMember().getAccount(), point.getCompany().getCmp_description(),
-										  point.getValue().toString(), point.getItem().getItem_description(),
-										  sdf.format(point.getSettlement_date()), sdf.format(point.getCreation_date()),
-										  point.getRemark(), point.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.pointList.add(point);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.pointList.add(point);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.pointList.add(point);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.pointList.add(point);
-								}
-							}
-						}
-					}
+					if (pointComparator.isMatch(point, this.searchField, this.searchOper, this.searchString)) {
+						this.pointList.add(point);
+					}				
 				}
 			} else {
 				this.pointList.addAll(itemPointList);
@@ -134,6 +107,13 @@ public class Item002PointGridAction extends ActionSupport implements Preparable,
 					Collections.reverse(pointList);
 				}
 			}
+			
+			double grandTotal = 0;
+			for (int i = 0; i < pointList.size(); i++) {
+				Point point = pointList.get(i);
+				grandTotal += point.getValue();
+			}
+			
 			Object totalCount = pointList.size();
 			this.record = Integer.valueOf(Integer.parseInt((totalCount == null) ? "0" : totalCount.toString()));
 			this.total = Integer.valueOf((int) Math.ceil(this.record.doubleValue() / this.rows.doubleValue()));
@@ -152,7 +132,7 @@ public class Item002PointGridAction extends ActionSupport implements Preparable,
 			userdata.put("company.cmp_description", "Sub Total:");
 			userdata.put("value", total);
 			userdata.put("settlement_date", "Grand Total:");
-			userdata.put("creation_date", formatter.format(pointBo.getPointSum(task, item)));
+			userdata.put("creation_date", formatter.format(grandTotal));
 
 			returnValue = SUCCESS;
 		} else {

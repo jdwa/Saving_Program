@@ -75,7 +75,7 @@
 						rollList\[\d+\]\.remark,
 						rollList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -97,7 +97,7 @@
 						payList\[\d+\]\.remark,
 						payList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -119,7 +119,7 @@
 						payList\[\d+\]\.remark,
 						payList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -175,7 +175,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -196,7 +196,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -217,7 +217,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -238,7 +238,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -259,7 +259,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -280,7 +280,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -301,7 +301,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -322,7 +322,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -343,7 +343,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -364,7 +364,7 @@
 						pointList\[\d+\]\.remark,
 						pointList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -421,7 +421,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -439,7 +439,7 @@
 						memberList\[\d+\]\.role\.role_description,
 						memberList\[\d+\]\.creation_date,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -461,7 +461,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -483,7 +483,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -505,7 +505,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -527,7 +527,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -549,7 +549,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>
@@ -571,7 +571,7 @@
 						statementList\[\d+\]\.remark,
 						statementList\[\d+\]\.timestamp,
 						userdata.*,
-						rows,page,total,record,sord,sidx,search,filters
+						rows,page,total,record,sord,sidx,search,filters,searchField,searchOper,searchString
 					</param>
 					<param name="noCache">true</param>
 					<param name="ignoreHierarchy">false</param>

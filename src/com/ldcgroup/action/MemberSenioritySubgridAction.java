@@ -2,7 +2,6 @@ package com.ldcgroup.action;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -93,38 +92,12 @@ public class MemberSenioritySubgridAction extends ActionSupport implements Prepa
 			List<Statement> memberStatementList = this.statementBo.list(member);
 			// Check for search operation
 			if (getSearchField() != null) {
+				StatementComparator statementComparator = new StatementComparator();				
 				for (int i = 0; i < memberStatementList.size(); i++) {
 					Statement statement = memberStatementList.get(i);
-					String[] fieldList = {"id","trade.tx_no","trade.category.category_description","member.account","company.cmp_description",
-										  "fund","type.type_description","settlement_date","creation_date",
-										  "remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {statement.getId().toString(), statement.getTrade().getTx_no(), statement.getTrade().getCategory().getCategory_description(),
-										  statement.getMember().getAccount(), statement.getCompany().getCmp_description(),
-										  statement.getFund().toString(), statement.getType().getType_description(),
-										  sdf.format(statement.getSettlement_date()), sdf.format(statement.getCreation_date()),
-										  statement.getRemark(), statement.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.statementList.add(statement);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.statementList.add(statement);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.statementList.add(statement);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.statementList.add(statement);
-								}
-							}
-						}
-					}
+					if (statementComparator.isMatch(statement, this.searchField, this.searchOper, this.searchString)) {
+						this.statementList.add(statement);
+					}				
 				}
 			} else {
 				this.statementList.addAll(memberStatementList);
@@ -139,6 +112,13 @@ public class MemberSenioritySubgridAction extends ActionSupport implements Prepa
 					Collections.reverse(statementList);
 				}
 			}
+			
+			double grandTotal = 0;
+			for (int i = 0; i < statementList.size(); i++) {
+				Statement statement = statementList.get(i);
+				grandTotal += statement.getFund();
+			}
+			
 			Object totalCount = statementList.size();
 			this.record = Integer.valueOf(Integer.parseInt((totalCount == null) ? "0" : totalCount.toString()));
 			this.total = Integer.valueOf((int) Math.ceil(this.record.doubleValue() / this.rows.doubleValue()));
@@ -157,7 +137,7 @@ public class MemberSenioritySubgridAction extends ActionSupport implements Prepa
 			userdata.put("company.cmp_description", "Sub Total:");
 			userdata.put("fund", total);
 			userdata.put("settlement_date", "Grand Total:");
-			userdata.put("creation_date", formatter.format(statementBo.getStatementSum(member)));
+			userdata.put("creation_date", formatter.format(grandTotal));
 			
 			returnValue = SUCCESS;
 		} else {

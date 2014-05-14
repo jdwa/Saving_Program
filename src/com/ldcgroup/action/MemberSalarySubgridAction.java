@@ -2,7 +2,6 @@ package com.ldcgroup.action;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -94,37 +93,12 @@ public class MemberSalarySubgridAction extends ActionSupport implements Preparab
 			List<Pay> memberRollPayList = this.payBo.list(roll, member);
 			// Check for search operation
 			if (getSearchField() != null) {
+				PayComparator payComparator = new PayComparator();				
 				for (int i = 0; i < memberRollPayList.size(); i++) {
 					Pay pay = memberRollPayList.get(i);
-					String[] fieldList = {"id","roll.tx_no","member.account","company.cmp_description",
-										  "value","term.term_description","pay_date", "settlement_date","creation_date",
-										  "remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {pay.getId().toString(), pay.getRoll().getRo_no(), pay.getMember().getAccount(), pay.getCompany().getCmp_description(),
-										  pay.getValue().toString(), pay.getTerm().getTerm_description(), sdf.format(pay.getPay_date()),
-										  sdf.format(pay.getSettlement_date()), sdf.format(pay.getCreation_date()),
-										  pay.getRemark(), pay.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.payList.add(pay);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.payList.add(pay);
-								}
-							}
-						}
-					}
+					if (payComparator.isMatch(pay, this.searchField, this.searchOper, this.searchString)) {
+						this.payList.add(pay);
+					}				
 				}
 			} else {
 				this.payList.addAll(memberRollPayList);
@@ -139,6 +113,13 @@ public class MemberSalarySubgridAction extends ActionSupport implements Preparab
 					Collections.reverse(payList);
 				}
 			}
+			
+			double grandTotal = 0;
+			for (int i = 0; i < payList.size(); i++) {
+				Pay pay = payList.get(i);
+				grandTotal += pay.getValue();
+			}
+			
 			Object totalCount = payList.size();
 			this.record = Integer.valueOf(Integer.parseInt((totalCount == null) ? "0" : totalCount.toString()));
 			this.total = Integer.valueOf((int) Math.ceil(this.record.doubleValue() / this.rows.doubleValue()));
@@ -157,7 +138,7 @@ public class MemberSalarySubgridAction extends ActionSupport implements Preparab
 			userdata.put("company.cmp_description", "Sub Total:");
 			userdata.put("value", subtotal);
 			userdata.put("settlement_date", "Grand Total:");
-			userdata.put("creation_date", formatter.format(payBo.getPaySum(roll, member)));
+			userdata.put("creation_date", formatter.format(grandTotal));
 			
 			returnValue = SUCCESS;
 		} else {

@@ -45,7 +45,7 @@
 	       pager="true"
 	       autowidth="true"
 	       navigator="true"
-	       navigatorSearchOptions="{sopt:['eq','ne','lt','gt']}"
+	       navigatorSearchOptions="{sopt:['eq','ne','lt','le','gt','ge','bw','bn','in','ni','ew','en','cn','nc']}"
 	       navigatorAddOptions="{height:280,reloadAfterSubmit:false}"
 	       navigatorEditOptions="{height:280,reloadAfterSubmit:false}"
 	       navigatorView="true"

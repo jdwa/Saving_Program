@@ -2,7 +2,6 @@ package com.ldcgroup.action;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -112,35 +111,13 @@ public class MemberSalaryGridAction extends ActionSupport implements Preparable,
 			this.rollList.clear();
 			// Check for search operation
 			if (getSearchField() != null) {
+				RollComparator rollComparator = new RollComparator();				
 				for (int i = 0; i < memberRollList.size(); i++) {
-					Roll roll = memberRollList.get(i);					
-					String[] fieldList = {"id","valid","ro_no","subvalue","company.cmp_description",
-										  "creation_date","remark","timestamp"};
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					String[] valueList = {roll.getId().toString(), roll.getValid().toString(), roll.getRo_no(), roll.getSubvalue().toString(), roll.getCompany().getCmp_description(), 
-										  sdf.format(roll.getCreation_date()), roll.getRemark(), roll.getTimestamp()};
-					for (int j = 0; j < fieldList.length; j++) {
-						if (getSearchField().equals(fieldList[j])) {
-							if (getSearchOper() != null && getSearchOper().equals("eq")) {
-								if (valueList[j].equals(getSearchString())) {
-									this.rollList.add(roll);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("ne")) {
-								if (!valueList[j].equals(getSearchString())) {
-									this.rollList.add(roll);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("lt")) {
-								if (valueList[j].compareTo(getSearchString()) < 0) {
-									this.rollList.add(roll);
-								}
-							} else if (getSearchOper() != null && getSearchOper().equals("gt")) {
-								if (valueList[j].compareTo(getSearchString()) > 0) {
-									this.rollList.add(roll);
-								}
-							}
-						}
-					}
-				}
+					Roll roll = memberRollList.get(i);
+					if (rollComparator.isMatch(roll, this.searchField, this.searchOper, this.searchString)) {
+						this.rollList.add(roll);
+					}				
+				}	
 			} else {
 				this.rollList.addAll(memberRollList);
 			}			
