@@ -61,10 +61,13 @@
 		<tr>
 			<th><s:text name="pay.id" /></th>
 			<th><s:text name="pay.roll.ro_no" /></th>
-			<th><s:text name="pay.member.account" /></th>
+			<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+				<th><s:text name="pay.member.account" /></th>
+			</security:authorize>
 			<th><s:text name="pay.company.cmp_description" /></th>
 			<th><s:text name="pay.value" /></th>
 			<th><s:text name="pay.term.term_description" /></th>
+			<th><s:text name="pay.pay_date" /></th>
 			<th><s:text name="pay.settlement_date" /></th>
 			<th><s:text name="pay.creation_date" /></th>
 			<th><s:text name="pay.remark" /></th>
@@ -77,10 +80,13 @@
 			<tr>
 				<td><s:property value="id" /></td>
 				<td><s:property value="roll.ro_no" /></td>
-				<td><s:property value="member.account" /></td>
+				<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+					<td><s:property value="member.account" /></td>
+				</security:authorize>
 				<td><s:property value="company.cmp_description" /></td>
 				<td><s:property value="value" /></td>
 				<td><s:property value="term.term_description" /></td>
+				<td><s:date name="pay_date" format="yyyy-MM-dd" /></td>
 				<td><s:date name="settlement_date" format="yyyy-MM-dd" /></td>
 				<td><s:date name="creation_date" format="yyyy-MM-dd" /></td>
 				<td><s:property value="remark" /></td>

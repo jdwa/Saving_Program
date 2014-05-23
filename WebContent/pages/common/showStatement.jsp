@@ -25,7 +25,9 @@
 			<th><s:text name="statement.id" /></th>
 			<th><s:text name="statement.trade.tx_no" /></th>
 			<th><s:text name="statement.trade.category.category_description" /></th>
-			<th><s:text name="statement.member.account" /></th>
+			<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+				<th><s:text name="statement.member.account" /></th>
+			</security:authorize>
 			<th><s:text name="statement.company.cmp_description" /></th>
 			<th><s:text name="statement.fund" /></th>
 			<th><s:text name="statement.type.type_description" /></th>
@@ -44,7 +46,9 @@
 				<td><s:property value="id" /></td>
 				<td><s:property value="trade.tx_no" /></td>
 				<td><s:property value="trade.category.category_description" /></td>
-				<td><s:property value="member.account" /></td>
+				<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+					<td><s:property value="member.account" /></td>
+				</security:authorize>
 				<td><s:property value="company.cmp_description" /></td>
 				<td><s:property value="fund" /></td>
 				<td><s:property value="type.type_description" /></td>

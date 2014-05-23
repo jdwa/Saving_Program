@@ -70,7 +70,6 @@
 				</security:authorize>
 				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">	
 					<sj:div><a href="listMemberStatementGrid.action"><s:text name="statement.grid.member" /></a></sj:div>					
-					<sj:div><a href="listMemberStatement.action"><s:text name="statement.list.member" /></a></sj:div>
 				</security:authorize>
 			</sj:accordionItem>
 		</security:authorize>
@@ -87,7 +86,6 @@
 				</security:authorize>
 				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_NORMAL', 'ROLE_RESIGN', 'ROLE_RETIRE' , 'ROLE_REMAIN', 'ROLE_RETURN')">	
 					<sj:div><a href="listMemberPointGrid.action"><s:text name="point.grid.member" /></a></sj:div>					
-					<sj:div><a href="listMemberPoint.action"><s:text name="point.list.member" /></a></sj:div>
 				</security:authorize>
 			</sj:accordionItem>
 		</security:authorize>

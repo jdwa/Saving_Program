@@ -66,7 +66,8 @@ public class RollAction extends ActionSupport implements Preparable, SessionAwar
 		if (this.rollList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)
+					|| (member.getRole().getRole_code().equals(Definition.ROLE_HR) && member.getCompany().getCmp_no().equals(Definition.HQ_NO))) {			
 					this.rollList = getRollBo().list();
 				} else {
 					this.rollList = getRollBo().list(member.getCompany());
@@ -176,7 +177,9 @@ public class RollAction extends ActionSupport implements Preparable, SessionAwar
 		
 		Date now = new Date(); // Update time
 		orgRoll.setValid(roll.getValid());
+		orgRoll.setRo_no(roll.getRo_no());
 		orgRoll.setRemark(roll.getRemark());
+		orgRoll.setPay_date(roll.getPay_date());
 		orgRoll.setCompany(((Member)this.session.get("CurrentMember")).getCompany());
 		orgRoll.setTimestamp(((Member)this.session.get("CurrentMember")).getAccount() + ", " + getText("action.last.update") + "[" + now + "]");
 		orgRoll.setValue(roll.getValue());

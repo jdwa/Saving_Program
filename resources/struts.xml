@@ -155,9 +155,6 @@
 			</action>
 			
 		<!-- Task & Point -->
-			<action name="listMemberPoint" class="com.ldcgroup.action.MemberPointListAction">
-				<result name="success" type="tiles">pages.action.showMemberPointList.tiles</result>
-			</action>
 			<action name="listMemberPointGrid" class="com.ldcgroup.action.MemberPointGridAction">
 				<result name="success" type="tiles">pages.action.showMemberPointGrid.tiles</result>
 			</action>
@@ -400,9 +397,6 @@
 			</action>
 
 		<!-- Trade & Statement -->
-			<action name="listMemberStatement" class="com.ldcgroup.action.MemberStatementListAction">
-				<result name="success" type="tiles">pages.action.showMemberStatementList.tiles</result>
-			</action>
 			<action name="listMemberStatementGrid" class="com.ldcgroup.action.MemberStatementGridAction">
 				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
 			</action>

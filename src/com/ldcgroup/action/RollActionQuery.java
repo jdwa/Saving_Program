@@ -60,7 +60,7 @@ public class RollActionQuery extends ActionSupport implements Preparable, Sessio
 		if (this.rollList == null) {
 			if ((this.session != null) && (this.session.get("CurrentMember") != null)) {
 				Member member = (Member) this.session.get("CurrentMember");
-				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {
+				if (member.getRole().getRole_code().equals(Definition.ROLE_ADMIN)) {			
 					this.rollList = getRollBo().list();
 				} else {
 					this.rollList = getRollBo().list(member.getCompany());

@@ -24,6 +24,7 @@
 			<th><s:text name="roll.id" /></th>
 			<th><s:text name="roll.ro_no" /></th>
 			<th><s:text name="roll.value" /></th>
+			<th><s:text name="roll.pay_date" /></th>
 			<th><s:text name="roll.settlement_date" /></th>
 			<th><s:text name="roll.creation_date" /></th>
 			<th><s:text name="roll.remark" /></th>
@@ -37,6 +38,7 @@
 				<td><s:property value="id" /></td>
 				<td><s:property value="ro_no" /></td>
 				<td><s:property value="value" /></td>
+				<td><s:date name="pay_date" format="yyyy-MM-dd" /></td>
 				<td><s:date name="settlement_date" format="yyyy-MM-dd" /></td>
 				<td><s:date name="creation_date" format="yyyy-MM-dd" /></td>
 				<td><s:property value="remark" /></td>

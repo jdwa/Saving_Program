@@ -256,7 +256,12 @@ public class RollAction002 extends ActionSupport implements Preparable, SessionA
 				pay.setTerm(term);
 				pay.setValue(member_value);
 				pay.setSettlement_date(roll.getSettlement_date());
-				pay.setPay_date(roll.getPay_date());
+				try{
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+					pay.setPay_date(sdf.parse(data[4].trim()));
+				} catch (Exception e) {
+					pay.setPay_date(roll.getPay_date());
+				}
 				pay.setCreation_date(roll.getCreation_date());
 				pay.setRemark(roll.getRemark() + "[" + term.getTerm_description() + "]");
 				pay.setTimestamp(((Member)this.session.get("CurrentMember")).getAccount() + ", " + getText("action.last.update") + "[" + now + "]");

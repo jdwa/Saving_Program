@@ -24,7 +24,7 @@
 		<s:textfield key="roll.id" value="%{roll.id}" readonly="true" />
 		<s:textfield key="roll.ro_no" value="%{roll.ro_no}" readonly="false" />
 		<s:textfield key="roll.value" value="%{roll.value}" />
-		<s:textfield key="roll.pay_date" value="%{roll.pay_date}" readonly="true" />
+		<s:textfield key="roll.pay_date" value="%{roll.pay_date}" readonly="false" />
 		<s:textfield key="roll.settlement_date" value="%{roll.settlement_date}" readonly="true" />
 		<s:textfield key="roll.creation_date" value="%{roll.creation_date}" readonly="true" />
 		<s:textfield key="roll.remark" value="%{roll.remark}" />

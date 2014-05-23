@@ -15,6 +15,104 @@
 <s:head />
 <sj:head jqueryui="true" jquerytheme="cupertino"/>
 <title><s:text name="statement.list.all" /></title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="plugins/jqplot.barRenderer.min.js"></script>
+	<script type="text/javascript" src="plugins/jqplot.pieRenderer.min.js"></script>
+	<script type="text/javascript" src="plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="plugins/jqplot.pointLabels.min.js"></script>
+	<link href="<s:url value ="/css/jquery.jqplot.min.css"/>" rel="stylesheet" type="text/css" />
+	
+    <script type="text/javascript">
+
+	    $(document).ready(function(){        
+	        var s1 = [<s:iterator value="barList"> 
+			   			<s:property value="fund_type_001" />, 
+				 	  </s:iterator> ];
+	        var s2 = [<s:iterator value="barList"> 
+						<s:property value="fund_type_002" />, 
+			 	  	  </s:iterator> ];
+	        var s3 = [<s:iterator value="barList"> 
+						<s:property value="fund_type_003" />, 
+	 	  			  </s:iterator> ];
+	        var s4 = [<s:iterator value="barList"> 
+						<s:property value="fund_type_004" />, 
+	 	  			  </s:iterator> ];
+	        var s5 = [<s:iterator value="barList"> 
+						<s:property value="fund_type_005" />, 
+	 	  			  </s:iterator> ];          
+	        var ticks = [<s:iterator value="barList"> 
+	        			   <s:property value="label" />, 
+	        			 </s:iterator> ];    
+	                     
+	        plot = $.jqplot('stacked-graph', [s1, s2, s3, s4, s5], {
+	        	seriesColors: [ "#FF6666", "#FFFF00", "#3399CC", "#CC0066",
+	            				"#663399", "#0066CC", "#99CC00", "#0099CC", "#FF0033",
+	            				"#ff5800", "#0085cc", "#c747a3", "#cddf54", "#FBD178",
+	            				"#26B4E3", "#bd70c7" ],
+	            negativeSeriesColors: [ "#FF6666", "#FFFF00", "#3399CC", "#CC0066",
+	    	            				"#663399", "#0066CC", "#99CC00", "#0099CC", "#FF0033",
+	    	            				"#ff5800", "#0085cc", "#c747a3", "#cddf54", "#FBD178",
+	    	            				"#26B4E3", "#bd70c7" ],		            				
+	        	animate : true,
+	        	stackSeries: true,
+	            seriesDefaults: {
+	            	label: [''],      // label to use in the legend for this line.                
+	                pointLabels: { show: true },
+	                renderer:$.jqplot.BarRenderer,                
+	                rendererOptions:{
+	                	fillToZero: true,
+	                	barWidth:30
+	                }          
+		        },
+	            series:[
+	                    {label: ['<s:text name='type.001' />']},
+	                    {label: ['<s:text name='type.002' />']},
+	                    {label: ['<s:text name='type.003' />']},
+	                    {label: ['<s:text name='type.004' />']},
+	                    {label: ['<s:text name='type.005' />']},
+	            ],            
+		        axesDefaults: {
+		            tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+		            tickOptions: {
+		              angle: -30,
+		              fontSize: '10pt'
+		            }
+		        },            
+		        axes: {                
+		            xaxis: {
+		            	show: true,                    
+		                renderer: $.jqplot.CategoryAxisRenderer,                    
+		                ticks: ticks                
+		            },
+		            yaxis: {
+		            	show: true,
+		                pad: 1,
+		                tickOptions: {formatString: '$%d'}
+		            }            
+		        },
+		        legend: {
+		            show: true,
+		            placement: 'insideGrid',
+		            location: 'nw',     // compass direction, nw, n, ne, e, se, s, sw, w.
+		        },        
+	        });
+	                     
+	        $('#stacked-graph').bind('jqplotDataHighlight',             
+	            function (ev, seriesIndex, pointIndex, data) {                
+	            	$('#info').html("<s:text name='statement.fund' />" + ' : ' + data[1].toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,'));            
+	            }        
+	        );
+	                             
+	        $('#stacked-graph').bind('jqplotDataUnhighlight',             
+	            function (ev) {                
+	            	$('#info').html("<s:text name='statement.fund' />" + ' : 0 ');            
+	            }        
+	        );    
+	    });
+		     
+    </script>
+
 </head>
 <body>
 	<s:actionerror />
@@ -32,7 +130,9 @@
 			<td><s:property value="%{#session.S_Member.role.role_description}"/></td>
 			<td><s:date name="%{#session.S_Member.creation_date}" format="yyyy-MM-dd HH:mm:ss" /></td>
 		</tr>
-	</table>
+	</table>	
+	<div id='stacked-graph'></div>
+	<div id='info' align='right'></div>
 	<br>
 	<h3><s:text name="statement.list.all" /></h3>
     <s:url id="statementurl" action="gridMemberStatement"/>
