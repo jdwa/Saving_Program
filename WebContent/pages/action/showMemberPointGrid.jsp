@@ -15,117 +15,53 @@
 <s:head />
 <sj:head jqueryui="true" jquerytheme="cupertino"/>
 <title><s:text name="point.list.all" /></title>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
-	<script type="text/javascript" src="plugins/jqplot.barRenderer.min.js"></script>
-	<script type="text/javascript" src="plugins/jqplot.pieRenderer.min.js"></script>
-	<script type="text/javascript" src="plugins/jqplot.categoryAxisRenderer.min.js"></script>
-	<script type="text/javascript" src="plugins/jqplot.pointLabels.min.js"></script>
-	<link href="<s:url value ="/css/jquery.jqplot.min.css"/>" rel="stylesheet" type="text/css" />
-	
-    <script type="text/javascript">    
-	    $(document).ready(function(){        
-	        var s1 = [<s:iterator value="barList"> 
-			   			<s:property value="value_item_001" />, 
-				 	  </s:iterator> ];
-	        var s2 = [<s:iterator value="barList"> 
-						<s:property value="value_item_002" />, 
-			 	  	  </s:iterator> ];
-	        var s3 = [<s:iterator value="barList"> 
-						<s:property value="value_item_003" />, 
-	 	  			  </s:iterator> ];
-	        var s4 = [<s:iterator value="barList"> 
-						<s:property value="value_item_004" />, 
-	 	  			  </s:iterator> ];
-	        var s5 = [<s:iterator value="barList"> 
-						<s:property value="value_item_005" />, 
-	 	  			  </s:iterator> ];          
-	        var s6 = [<s:iterator value="barList"> 
-						<s:property value="value_item_006" />, 
-					  </s:iterator> ];          
-	        var s7 = [<s:iterator value="barList"> 
-						<s:property value="value_item_007" />, 
-			  		  </s:iterator> ];          
-	        var s8 = [<s:iterator value="barList"> 
-						<s:property value="value_item_008" />, 
-		  			  </s:iterator> ];          
-	        var s101 = [<s:iterator value="barList"> 
-						<s:property value="value_item_101" />, 
-		    		  </s:iterator> ];          
-	        var ticks = [<s:iterator value="barList"> 
-	        			   <s:property value="label" />, 
-	        			 </s:iterator> ];    
-	                     
-	        plot = $.jqplot('stacked-graph', [s1, s2, s3, s4, s5, s6, s7, s8, s101], {
-	            seriesColors: [ "#FF6666", "#FFFF00", "#3399CC", "#CC0066",
-	            				"#663399", "#0066CC", "#99CC00", "#0099CC", "#FF0033",
-	            				"#FF5800", "#0085CC", "#C747A3", "#CDDF54", "#FBD178",
-	            				"#26B4E3", "#BD70C7" ],
-	            negativeSeriesColors: [ "#FF6666", "#FFFF00", "#3399CC", "#CC0066",
-	    	            				"#663399", "#0066CC", "#99CC00", "#0099CC", "#FF0033",
-	    	            				"#FF5800", "#0085CC", "#C747A3", "#CDDF54", "#FBD178",
-	    	            				"#26B4E3", "#BD70C7" ],				            
-	        	animate : true,
-	        	stackSeries: false,
-	            seriesDefaults: {
-	            	label: [''],      // label to use in the legend for this line.                
-	                pointLabels: { show: true },
-	                renderer:$.jqplot.BarRenderer,                
-	                rendererOptions:{
-	                	fillToZero: true,
-	                	barWidth:30
-	                }          
-		        },
-	            series:[
-	                    {label: ['<s:text name='item.001' />']},
-	                    {label: ['<s:text name='item.002' />']},
-	                    {label: ['<s:text name='item.003' />']},
-	                    {label: ['<s:text name='item.004' />']},
-	                    {label: ['<s:text name='item.005' />']},
-	                    {label: ['<s:text name='item.006' />']},
-	                    {label: ['<s:text name='item.007' />']},
-	                    {label: ['<s:text name='item.008' />']},
-	                    {label: ['<s:text name='item.101' />']},
-	            ],            
-		        axesDefaults: {
-		            tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
-		            tickOptions: {
-		              angle: -30,
-		              fontSize: '10pt'
-		            }
-		        },            
-		        axes: {                
-		            xaxis: {
-			        	show: true,                    
-		                renderer: $.jqplot.CategoryAxisRenderer,                    
-		                ticks: ticks                
-		            },
-		            yaxis: {
-		                show: true,
-		                pad: 1,
-		                tickOptions: {formatString: '%#d'}
-		            }            
-		        },
-		        legend: {
-		            show: true,
-		            placement: 'outsideGrid',
-		            location: 'ne',     // compass direction, nw, n, ne, e, se, s, sw, w.
-		        },        
-	        });
-	                     
-	        $('#stacked-graph').bind('jqplotDataHighlight',             
-	            function (ev, seriesIndex, pointIndex, data) {                
-	            	$('#info').html("<s:text name='point.value' />" + ' : ' + data[1].toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,'));            
-	            }        
-	        );
-	                             
-	        $('#stacked-graph').bind('jqplotDataUnhighlight',             
-	            function (ev) {                
-	            	$('#info').html("<s:text name='point.value' />" + ' : 0 ');            
-	            }        
-	        );    
-	    });
-	    
+	<script src="js/jqBarGraph.1.1.js" type="text/javascript" ></script>
+    <script type="text/javascript">     
+      $(document).ready(function () {        
+    	  stackedByMonth = new Array(
+  				<s:iterator value="barList">
+	            	[[<s:property value='value_item_001' />, 
+	              	<s:property value='value_item_002' />, 
+	              	<s:property value='value_item_003' />, 
+	              	<s:property value='value_item_004' />, 
+	              	<s:property value='value_item_005' />, 
+	              	<s:property value='value_item_006' />, 
+	              	<s:property value='value_item_007' />, 
+	              	<s:property value='value_item_008' />],
+	              	'<s:property value="label" />']
+				  </s:iterator>
+				  );
+			
+    	  $("#stacked-graph").jqBarGraph({
+    			data: stackedByMonth, // array of data for your graph
+    			title: '', // title of your graph, accept HTML
+    			barSpace: 200, // this is default space between bars in pixels
+    			width: 800, // default width of your graph
+    			height: 250, //default height of your graph
+    			color: '#000000', // if you don't send colors for your data this will be default bars color
+    			colors: ['#FF6666', '#FFFF00', '#3399CC', '#CC0066', '#663399', '#0066CC', '#99CC00', '#0099CC'], // array of colors that will be used for your bars and legends
+    			lbl: '', // if there is no label in your array
+    			sort: false, // sort your data before displaying graph, you can sort as 'asc' or 'desc'
+    			position: 'bottom', // position of your bars, can be 'bottom' or 'top'. 'top' doesn't work for multi type
+    			prefix: '', // text that will be shown before every label
+    			postfix: '', // text that will be shown after every label
+    			animate: true, // if you don't need animated appearance change to false
+    			speed: 2, // speed of animation in seconds
+    			legendWidth: 150, // width of your legend box
+    			legend: true, // if you want legend change to true
+    			legends: ["<s:text name='item.001' />", 
+    	                  "<s:text name='item.002' />", 
+    	                  "<s:text name='item.003' />", 
+    	                  "<s:text name='item.004' />", 
+    	                  "<s:text name='item.005' />", 
+    	                  "<s:text name='item.006' />", 
+    	                  "<s:text name='item.007' />", 
+    	                  "<s:text name='item.008' />"], // array for legend. for simple graph type legend will be extracted from labels if you don't set this
+    			type: 'multi', // for multi array data default graph type is stacked, you can change to 'multi' for multi bar type
+    			showValues: true, // you can use this for multi and stacked type and it will show values of every bar part
+    			showValuesColor: '#000' // color of font for values 	
+    	  });
+      });
     </script>
 
 </head>
@@ -147,7 +83,6 @@
 		</tr>
 	</table>
 	<div id='stacked-graph'></div>
-	<div id='info' align='right'></div>
 	<br>	
 	<h3><s:text name="point.list.all" /></h3>
     <s:url id="pointurl" action="gridMemberPoint"/>
