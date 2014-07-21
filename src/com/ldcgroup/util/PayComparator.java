@@ -21,7 +21,7 @@ public class PayComparator implements Comparator<Pay> {
 		this.sidx = 0;
 	}
 	
-	public PayComparator(int sidx){
+	public PayComparator(int sidx) {
 		this.sidx = sidx;
 	}
 	

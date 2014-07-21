@@ -198,11 +198,11 @@ public class TradeAction104 extends ActionSupport implements Preparable, Session
 				indexCalendar.add(Calendar.MONTH, 1); // 下個月開始計息
 				while (!indexCalendar.after(tradeCalendar)) {
 					int idxYear = indexCalendar.get(Calendar.YEAR);
-					//-- System.out.println("ID : " + statement.getId() + ", Fund : [" + statement.getFund() + "], Year-Month-Day : [" + indexCalendar.get(Calendar.YEAR) + "-" + (indexCalendar.get(Calendar.MONTH) + 1) + "-" + indexCalendar.get(Calendar.DATE) + "]");					
+					//-- System.out.println("ID : " + statement.getId() + ", Fund : [" + statement.getFund() + "], Year-Month-Day : [" + indexCalendar.get(Calendar.YEAR) + "-" + (indexCalendar.get(Calendar.MONTH) + 1) + "-" + indexCalendar.get(Calendar.DATE) + "]");
 					Rate rate = getRateBo().findByYear(idxYear);
 					if ( rate != null) {
 						cur_type005Sum += statement.getFund() * (rate.getRate_value()/100/12);
-						//-- System.out.println("Year : [" + idxYear + "], interest : " + cur_type005Sum);						
+						//-- System.out.println("Year : [" + idxYear + "], interest : " + cur_type005Sum);		
 					} else {
 						addActionError(getText("rate.year.not.exist") + idxYear);
 						returnValue = INPUT;

@@ -56,12 +56,14 @@
 	       gridModel="payList"
 	       rowList="10,15,20"
 	       rowNum="10"
+	       sortname="id"
+		   sortorder="desc"
 		   onSelectRowTopics="rowselect"
 	   	   onEditInlineSuccessTopics="oneditsuccess"
 		   userDataOnFooter="true"
 		   footerrow="true"
 		   multiselect="false">  	    	
-		   <sjg:gridColumn name="id" index="id" title='%{getText("pay.id")}' formatter="integer" sortable="true" />
+		   <sjg:gridColumn name="id" index="id" title='%{getText("pay.id")}' formatter="integer" sortable="true" hidden="true" />
 		   <sjg:gridColumn name="roll.ro_no" index="roll.ro_no" title='%{getText("pay.roll.ro_no")}' sortable="true" />
 		   <sjg:gridColumn name="member.account" index="member.account" title='%{getText("pay.member.account")}' sortable="true" />
 		   <sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("pay.company.cmp_description")}' sortable="true" />
