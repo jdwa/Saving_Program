@@ -183,6 +183,12 @@ public class TaskAction002 extends ActionSupport implements Preparable, SessionA
 			double member_value = Double.parseDouble(data[3].trim());
 			String[] itemStr = data[4].trim().split("[()]");
 			Item item = getItemBo().findByNo(itemStr[1].trim());
+			if (item == null) {
+				addActionError("[" + itemStr[1].trim() + "]" + getText("item.not.exist"));
+				points.clear();
+				break;
+			}
+			
 			String[] cmpStr = data[1].trim().split("[()]");
 			Company company = getCompanyBo().findByNo(cmpStr[1].trim());
 			if (company == null) {
