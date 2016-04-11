@@ -23,7 +23,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url" value="jdbc:sqlserver://192.168.20.221:1433;databaseName=Saving_Program_Trial" />
+		<property name="url" value="jdbc:sqlserver://192.168.20.225:1433;databaseName=Saving_Program_Trial" />
 		<property name="username" value="sp.admin.trial" />
 		<property name="password" value="!QAZxsw2.trial" />
 	</bean>
