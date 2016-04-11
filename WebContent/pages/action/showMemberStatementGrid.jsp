@@ -33,7 +33,7 @@
     	  $("#stacked-graph").jqBarGraph({
     			data: stackedByMonth, // array of data for your graph
     			title: '', // title of your graph, accept HTML
-    			barSpace: 30, // this is default space between bars in pixels
+    			barSpace: 50, // this is default space between bars in pixels
     			width: 800, // default width of your graph
     			height: 250, //default height of your graph
     			color: '#000000', // if you don't send colors for your data this will be default bars color

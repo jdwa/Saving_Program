@@ -151,7 +151,7 @@ public class MemberStatementGridAction extends ActionSupport implements Preparab
 			calendar.set(Calendar.SECOND, 0);
 			calendar.set(Calendar.MILLISECOND, 0);
 			SimpleDateFormat sdFormat;			
-			for (int i = 0; i < 9; i++) {
+			for (int i = 0; i < 7; i++) {
 				calendar.add(Calendar.MONTH, -1);
 				calendar.set(Calendar.DATE, 1);
 				calendar.roll(Calendar.DATE, -1);	

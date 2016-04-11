@@ -151,7 +151,7 @@ public class TradeAction202 extends ActionSupport implements Preparable, Session
 			this.yearList = new ArrayList<String>();
 			Calendar calendar = Calendar.getInstance();
 			int year = calendar.get(Calendar.YEAR);
-			for (int i = year-1; i < year+1; i++) {
+			for (int i = year-3; i < year+1; i++) {
 				this.yearList.add((new Integer(i)).toString());
 			}
 		}
