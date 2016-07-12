@@ -162,9 +162,10 @@
 		    </sjg:grid>
       	    	
     	<sjg:gridColumn name="id" index="id" title='%{getText("member.id")}' formatter="integer" sortable="true" />
-    	<sjg:gridColumn name="account" index="account" title='%{getText("member.account")}' sortable="true" />
     	<sjg:gridColumn name="active" index="active" title='%{getText("member.active")}' sortable="true" />		
-    	<sjg:gridColumn name="accumulation" index="accumulation" title='%{getText("member.accumulation")}' formatter="currency" sortable="true" />	
+    	<sjg:gridColumn name="accumulation" index="accumulation" title='%{getText("member.accumulation")}' formatter="currency" sortable="true" />
+    	<sjg:gridColumn name="account" index="account" title='%{getText("member.account")}' sortable="true" />
+    	<sjg:gridColumn name="amount" index="amount" title='%{getText("member.amount")}' formatter="currency" sortable="true" />	
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("member.company.cmp_description")}' sortable="true" />	
     	<sjg:gridColumn name="role.role_description" index="role.role_description" title='%{getText("member.role.role_description")}' sortable="true" />	
     	<sjg:gridColumn name="creation_date" index="creation_date" title='%{getText("member.creation_date")}' sortable="true" />	

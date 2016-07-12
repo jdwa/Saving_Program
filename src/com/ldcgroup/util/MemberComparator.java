@@ -12,7 +12,7 @@ public class MemberComparator implements Comparator<Member> {
 	private String searchOper;
 	private String searchString;
 	
-	private String[] fieldList = {"id","active","accumulation","account","company.cmp_description",
+	private String[] fieldList = {"id","active","accumulation","account","amount","company.cmp_description",
 								  "role.role_description","creation_date","remark","timestamp"};
 	
 	public MemberComparator(){
@@ -63,18 +63,27 @@ public class MemberComparator implements Comparator<Member> {
 				result = o1.getAccount().compareTo(o2.getAccount());
 				break;
 			case 4:
+				if (o1.getAmount() > o2.getAmount()) {
+					result = 1;
+				} else if (o1.getAmount() < o2.getAmount()) {
+					result = -1;
+				} else {
+					result = 0;
+				}
+				break;	
+			case 5:
 				result = o1.getCompany().getCmp_description().compareTo(o2.getCompany().getCmp_description());
 				break;
-			case 5:
+			case 6:
 				result = o1.getRole().getRole_description().compareTo(o2.getRole().getRole_description());
 				break;
-			case 6:
+			case 7:
 				result = o1.getCreation_date().compareTo(o2.getCreation_date());
 				break;
-			case 7:
+			case 8:
 				result = o1.getRemark().compareTo(o2.getRemark());
 				break;
-			case 8:
+			case 9:
 				result = o1.getTimestamp().compareTo(o2.getTimestamp());
 				break;				
 			default:
@@ -91,7 +100,7 @@ public class MemberComparator implements Comparator<Member> {
 		boolean result = false;
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Object[] valueList = {member.getId(), member.getActive().toString(), member.getAccumulation(), member.getAccount(),
+		Object[] valueList = {member.getId(), member.getActive().toString(), member.getAccumulation(), member.getAccount(), member.getAmount(),
 						  member.getCompany().getCmp_description(), member.getRole().getRole_description(),
 						  sdf.format(member.getCreation_date()),member.getRemark(), member.getTimestamp()};
 		for (int j = 0; j < fieldList.length; j++) {

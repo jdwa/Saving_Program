@@ -52,35 +52,35 @@ public class PointDaoImpl extends HibernateDaoSupport implements PointDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list() {
-		return (List<Point>) getHibernateTemplate().find("from Point");
+		return (List<Point>) getHibernateTemplate().find("from Point P order by P.settlement_date Desc");
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Member member) {
-		return (List<Point>) getHibernateTemplate().find("from Point P where P.member.id = ?", member.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.member.id = ? order by P.settlement_date Desc", member.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Task task) {
-		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ?", task.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ? order by P.settlement_date Desc", task.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Task task, Item item) {
-		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ? and P.item.id = ?", task.getId(), item.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.task.id = ? and P.item.id = ? order by P.settlement_date Desc", task.getId(), item.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Point> list(Item item) {
-		return (List<Point>) getHibernateTemplate().find("from Point P where P.item.id = ?", item.getId());
+		return (List<Point>) getHibernateTemplate().find("from Point P where P.item.id = ? order by P.settlement_date Desc", item.getId());
 	}
 
 	@Override

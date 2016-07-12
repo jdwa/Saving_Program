@@ -52,42 +52,42 @@ public class PayDaoImpl extends HibernateDaoSupport implements PayDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list() {
-		return (List<Pay>) getHibernateTemplate().find("from Pay");
+		return (List<Pay>) getHibernateTemplate().find("from Pay P order by P.settlement_date Desc");
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list(Member member) {
-		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.member.id = ?", member.getId());
+		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.member.id = ? order by P.settlement_date Desc", member.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list(Roll roll) {
-		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ?", roll.getId());
+		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ? order by P.settlement_date Desc", roll.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list(Roll roll, Member member) {
-		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ? and P.member.id = ?", roll.getId(), member.getId());
+		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ? and P.member.id = ? order by P.settlement_date Desc", roll.getId(), member.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list(Roll roll, Term term) {
-		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ? and P.term.id = ?", roll.getId(), term.getId());
+		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.roll.id = ? and P.term.id = ? order by P.settlement_date Desc", roll.getId(), term.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Pay> list(Term term) {
-		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.term.id = ?", term.getId());
+		return (List<Pay>) getHibernateTemplate().find("from Pay P where P.term.id = ? order by P.settlement_date Desc", term.getId());
 	}
 
 	@Override

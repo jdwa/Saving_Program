@@ -21,11 +21,34 @@
 		<tr>
 			<th><s:text name="trade.valid" /></th>
 			<th><s:text name="trade.tx_no" /></th>
+			<th><s:text name="trade.company.cmp_description" /></th>
 			<th><s:text name="trade.category.category_description" /></th>
 			<th><s:text name="trade.fund" /></th>
 			<th><s:text name="trade.settlement_date" /></th>
 			<th><s:text name="trade.creation_date" /></th>	
+			<th><s:text name="trade.remark" /></th>
 		</tr>
+
+		<s:iterator value="tradeList">
+			<tr>
+				<td><s:property value="valid" /></td>
+				<td><s:property value="tx_no" /></td>
+				<td><s:property value="company.cmp_description" /></td>
+				<td><s:property value="category.category_description" /></td>
+				<td><s:property value="fund" /></td>
+				<td><s:date name="settlement_date" format="yyyy-MM-dd" /></td>
+				<td><s:date name="creation_date" format="yyyy-MM-dd" /></td>
+				<td><s:property value="remark" /></td>
+				<!-- 
+				<td><s:property value="remark" /></td>
+				<td><s:property value="timestamp" /></td>
+				<td><a href="deleteTrade.action?id=<s:property value="id" />"><s:text name="submit.delete" /></a></td>
+				<td><a href="detailTrade.action?id=<s:property value="id" />"><s:text name="submit.detail" /></a></td>
+				 -->
+			</tr>
+		</s:iterator>
+		
+		<!--  
 		<tr>
 			<td><s:property value="%{#session.S_Trade.valid}"/></td>
 			<td><s:property value="%{#session.S_Trade.tx_no}"/></td>
@@ -34,7 +57,9 @@
 			<td><s:date name="%{#session.S_Trade.settlement_date}" format="yyyy-MM-dd HH:mm:ss" /></td>
 			<td><s:date name="%{#session.S_Trade.creation_date}" format="yyyy-MM-dd HH:mm:ss" /></td>
 		</tr>
+		-->
 	</table>
+	<br>
 	<h3><s:text name="trade.detail" /></h3>
 	<s:actionerror />
 	<s:actionmessage />
@@ -81,6 +106,7 @@
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("statement.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("statement.timestamp")}' sortable="true" />
     </sjg:grid>
+    <br>
     <sjg:grid
         id="gridtable002"
         caption='%{getText("type.002")}'
@@ -119,6 +145,7 @@
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("statement.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("statement.timestamp")}' sortable="true" />
     </sjg:grid>
+    <br>
     <sjg:grid
         id="gridtable003"
         caption='%{getText("type.003")}'
@@ -157,6 +184,7 @@
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("statement.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("statement.timestamp")}' sortable="true" />
     </sjg:grid>
+    <br>
     <sjg:grid
         id="gridtable004"
         caption='%{getText("type.004")}'
@@ -195,6 +223,7 @@
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("statement.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("statement.timestamp")}' sortable="true" />
     </sjg:grid>
+    <br>
     <sjg:grid
         id="gridtable005"
         caption='%{getText("type.005")}'

@@ -13,7 +13,7 @@ import com.ldcgroup.model.Trade;
 import com.ldcgroup.model.Type;
 
 public class StatementDaoImpl extends HibernateDaoSupport implements StatementDao {
-
+	
 	@Override
 	@Transactional(readOnly = true)
 	public Statement findById(Long id) {

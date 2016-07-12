@@ -188,6 +188,7 @@ public class TaskAction001 extends ActionSupport implements Preparable, SessionA
 		if (task != null) {
 			if (getTaskBo().findByNo(task.getTk_no()) != null) {				
 				addActionError(this.getText("errors.duplicate") + task.getTk_no());
+				this.session.put("S_Task", null);
 			}
 		}
 	}

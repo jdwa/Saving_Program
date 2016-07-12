@@ -24,7 +24,8 @@ public class Member implements Serializable {
 	private Boolean active;
 	private Company company;
 	private Role role;
-	private transient Double accumulation; // (Years) Not permanent data, dynamically calculated by action. 
+	private transient Double accumulation = 0.0; // (Years) Not permanent data, dynamically calculated by action. 
+	private transient Double amount = 0.0; // total amount of the member.
 
 	@Id
 	@GeneratedValue
@@ -111,6 +112,12 @@ public class Member implements Serializable {
 	}
 	public void setAccumulation(Double accumulation) {
 		this.accumulation = accumulation;
+	}
+	public Double getAmount() {
+		return amount;
+	}
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 }

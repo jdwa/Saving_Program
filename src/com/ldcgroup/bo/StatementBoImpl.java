@@ -1,5 +1,6 @@
 package com.ldcgroup.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -67,6 +68,30 @@ public class StatementBoImpl implements StatementBo {
 		return statementDao.list(trade, type);
 	}
 
+	@Override
+	public List<Statement> list(List<Trade> tradeList) {
+		List<Statement> statementList = new ArrayList<Statement>();
+		
+		if (tradeList != null) {
+			for (int i = 0; i < tradeList.size(); i++) {
+				statementList.addAll(this.list(tradeList.get(i)));
+			}			
+		}
+		return statementList;
+	}
+
+	@Override
+	public List<Statement> list(List<Trade> tradeList, Type type) {
+		List<Statement> statementList = new ArrayList<Statement>();
+		
+		if (tradeList != null) {
+			for (int i = 0; i < tradeList.size(); i++) {
+				statementList.addAll(this.list(tradeList.get(i), type));
+			}			
+		}
+		return statementList;
+	}
+	
 	@Override
 	public List<Statement> list(Type type) {
 		return statementDao.list(type);

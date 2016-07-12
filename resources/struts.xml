@@ -426,9 +426,10 @@
 				<result name="success" type="json">
 					<param name="includeProperties">
 						memberList\[\d+\]\.id,
-						memberList\[\d+\]\.account,
 						memberList\[\d+\]\.active,
 						memberList\[\d+\]\.accumulation,
+						memberList\[\d+\]\.account,
+						memberList\[\d+\]\.amount,
 						memberList\[\d+\]\.company\.cmp_description,
 						memberList\[\d+\]\.role\.role_description,
 						memberList\[\d+\]\.creation_date,

@@ -56,20 +56,20 @@ public class RollDaoImpl extends HibernateDaoSupport implements RollDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Roll> list() {
-		return (List<Roll>) getHibernateTemplate().find("from Roll");
+		return (List<Roll>) getHibernateTemplate().find("from Roll R order by R.settlement_date Desc");
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Roll> list(Company company) {
-		return (List<Roll>) getHibernateTemplate().find("from Roll R where R.company.id = ?", company.getId());
+		return (List<Roll>) getHibernateTemplate().find("from Roll R where R.company.id = ? order by R.settlement_date Desc", company.getId());
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Roll> listValidate() {
-		return (List<Roll>) getHibernateTemplate().find("from Roll R where R.valid = ?", Boolean.TRUE);
+		return (List<Roll>) getHibernateTemplate().find("from Roll R where R.valid = ? order by R.settlement_date Desc", Boolean.TRUE);
 	}
 }

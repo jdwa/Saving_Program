@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -99,53 +98,61 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 		} else {
 			memberNormalList = getMemberBo().listNormal(member.getCompany());
 		}
-		
+
 		if (memberNormalList != null) {
-			
 			List<Member> statementMembers = new ArrayList<Member>();
+			Date startDate = new Date();
 			for (int i = 0; i < memberNormalList.size(); i++) {
 				Member sm = memberNormalList.get(i);
-				if (this.statementBo.list(sm).size() > 0) {
-					statementMembers.add(sm);
-				}
-			}
-			memberNormalList.clear();
-			memberNormalList.addAll(statementMembers);
-			
-			for (int i = 0; i < memberNormalList.size(); i++) {
-				Date startDate = new Date();
-				member = memberNormalList.get(i);	
 				
 				// 設定員工加入年資為『定期提領』資格之年資預設值。
 				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(member.getCreation_date());
+				calendar.setTime(sm.getCreation_date());
 				calendar.add(Calendar.MONTH, -1);
 				calendar.set(Calendar.DATE, 1);
 				calendar.roll(Calendar.DATE, -1);					
 				double accumulation = ((double)(now.getTime() - calendar.getTime().getTime()) / (double)(86400000) / (double)(365));
-				member.setAccumulation(accumulation);
+				sm.setAccumulation(accumulation);
 				
-				List<Statement> statementList = statementBo.list(member);
-				Iterator<Statement> idx = statementList.iterator();
-				while (idx.hasNext()) {
-					Statement statement = (Statement) idx.next();
-					if (statement.getSettlement_date().getTime() < startDate.getTime()) {
-						startDate = statement.getSettlement_date();
-					}
-					// 計算符合資格之定期提領年資。以最近一次提領為計算年資之起始時間。
-					if ("101".equals(statement.getTrade().getCategory().getCategory_no())
-						|| "103".equals(statement.getTrade().getCategory().getCategory_no())
-						|| "104".equals(statement.getTrade().getCategory().getCategory_no())
-						|| "105".equals(statement.getTrade().getCategory().getCategory_no())
-						|| "106".equals(statement.getTrade().getCategory().getCategory_no())
-						|| "107".equals(statement.getTrade().getCategory().getCategory_no())) {
-						accumulation = ((double)(now.getTime() - statement.getTrade().getSettlement_date().getTime()) / (double)(86400000) / (double)(365));
-						if ((member.getAccumulation() == null) || (accumulation < member.getAccumulation().doubleValue())) {
-							member.setAccumulation(accumulation);
+				if (this.statementList != null) {
+					double amount = 0;
+					for (int j = 0; j < this.statementList.size(); j++) {
+						Statement s = this.statementList.get(j);
+						if (s.getMember().getId() == sm.getId()) {
+							amount += s.getFund();
+							
+							if (s.getSettlement_date().getTime() < startDate.getTime()) {
+								startDate = s.getSettlement_date();
+							}
+							// 計算符合資格之定期提領年資。以最近一次提領為計算年資之起始時間。
+							if ("101".equals(s.getTrade().getCategory().getCategory_no())
+								|| "103".equals(s.getTrade().getCategory().getCategory_no())
+								|| "104".equals(s.getTrade().getCategory().getCategory_no())
+								|| "105".equals(s.getTrade().getCategory().getCategory_no())
+								|| "106".equals(s.getTrade().getCategory().getCategory_no())
+								|| "107".equals(s.getTrade().getCategory().getCategory_no())) {
+								accumulation = ((double)(now.getTime() - s.getTrade().getSettlement_date().getTime()) / (double)(86400000) / (double)(365));
+								if ((sm.getAccumulation() == null) || (accumulation < sm.getAccumulation().doubleValue())) {
+									sm.setAccumulation(accumulation);
+								}
+							}							
 						}
 					}
+					
+					if (amount > 0) {
+						sm.setAmount(amount);
+						statementMembers.add(sm);
+					} 
 				}
+				/*-- Due to the performance issue, do not use the statementBo.list().
+				if (this.statementBo.list(sm).size() > 0) {
+					statementMembers.add(sm);
+				}
+				--*/					
 			}
+
+			memberNormalList.clear();
+			memberNormalList.addAll(statementMembers);
 			
 			this.memberList.clear();
 			// Check for search operation
@@ -170,7 +177,7 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 					Collections.reverse(memberList);
 				}
 			}			
-			
+
 			Object totalCount = memberList.size();
 			this.record = Integer.valueOf(Integer.parseInt((totalCount == null) ? "0" : totalCount.toString()));
 			this.total = Integer.valueOf((int) Math.ceil(this.record.doubleValue() / this.rows.doubleValue()));

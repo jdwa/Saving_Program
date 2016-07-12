@@ -56,20 +56,20 @@ public class TaskDaoImpl extends HibernateDaoSupport implements TaskDao {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Task> list() {
-		return (List<Task>) getHibernateTemplate().find("from Task");
+		return (List<Task>) getHibernateTemplate().find("from Task T order by T.settlement_date Desc");
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Task> list(Company company) {
-		return (List<Task>) getHibernateTemplate().find("from Task T where T.company.id = ?", company.getId());
+		return (List<Task>) getHibernateTemplate().find("from Task T where T.company.id = ? order by T.settlement_date Desc", company.getId());
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public List<Task> listValidate() {
-		return (List<Task>) getHibernateTemplate().find("from Task T where T.valid = ?", Boolean.TRUE);
+		return (List<Task>) getHibernateTemplate().find("from Task T where T.valid = ? order by T.settlement_date Desc", Boolean.TRUE);
 	}
 }

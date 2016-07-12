@@ -1,6 +1,7 @@
 package com.ldcgroup.action;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +31,12 @@ public class TradeActionQuery extends ActionSupport implements Preparable, Sessi
 	private StatementBo statementBo;
 	private Trade trade;
 	private TradeBo tradeBo;
+	private String query;
+	private int queryYear;
 	private List<Statement> statementList;
 	private List<Trade> tradeList;
+	private List<String> yearList; // For years list
+	private List<String> queryList; // For query list
 
 	public TradeActionQuery() {
 		super();
@@ -67,24 +72,55 @@ public class TradeActionQuery extends ActionSupport implements Preparable, Sessi
 				}
 			}
 		}
+		
+		if (this.yearList == null) {
+			this.yearList = new ArrayList<String>();
+			Calendar calendar = Calendar.getInstance();
+			int year = calendar.get(Calendar.YEAR);
+			for (int i = 2013; i < year+1; i++) {
+				this.yearList.add((new Integer(i)).toString());
+			}
+		}
+		
+		if (this.queryList == null) {
+			this.queryList = new ArrayList<String>();
+			this.queryList.add(getText("query.trade.no"));
+			this.queryList.add(getText("query.trade.year"));
+		}
 	}
 	
 	@Override
 	public String execute() throws Exception {
 		String returnValue = ERROR;
+		List<Trade> orgTradeList = new ArrayList<Trade>();
 		
+		orgTradeList.addAll(tradeList);
 		this.tradeList.clear();
 		this.statementList.clear();
 
-		trade = getTradeBo().findByNo(trade.getTx_no());
-		
-		if (trade != null) {
-			this.tradeList.add(trade);
-			this.statementList = getStatementBo().list(trade);
-			this.session.put("S_Trade", trade);
-			returnValue = SUCCESS;
-		} else {
-			addActionMessage(getText("action.trade.statements.zero"));
+		if (getText("query.trade.no").equals(this.query)) {
+			trade = getTradeBo().findByNo(trade.getTx_no());
+			if (trade != null) {
+				this.tradeList.add(trade);
+				this.statementList = getStatementBo().list(trade);
+				this.session.put("S_TradeList", tradeList);
+				returnValue = SUCCESS;
+			} else {
+				addActionMessage(getText("action.trade.statements.zero"));
+				returnValue = SUCCESS;
+			}
+		} else if (getText("query.trade.year").equals(this.query)) {
+			for (int i = 0; i < orgTradeList.size(); i++){
+				trade = orgTradeList.get(i);
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(trade.getSettlement_date());
+				int sYear = calendar.get(Calendar.YEAR);
+				if (sYear == this.queryYear) {
+					this.tradeList.add(trade);
+					this.statementList = getStatementBo().list(trade);
+				}	
+			}
+			this.session.put("S_TradeList", tradeList);
 			returnValue = SUCCESS;
 		}
 		
@@ -94,10 +130,9 @@ public class TradeActionQuery extends ActionSupport implements Preparable, Sessi
     // Validation
 	@Override
 	public void validate() {
-		if (trade != null) {
-			if (getTradeBo().findByNo(trade.getTx_no()) == null) {				
-				addActionError(this.getText("errors.data.not.exist") + trade.getTx_no());
-			}
+		if (query == null) {
+			addActionError(this.getText("errors.no.data.selected"));
+			this.session.put("S_TradeList", null);
 		}
 	}
 
@@ -155,4 +190,35 @@ public class TradeActionQuery extends ActionSupport implements Preparable, Sessi
 		this.statementList = statementList;
 	}
 	
+	public List<String> getYearList() {
+		return yearList;
+	}
+
+	public void setYearList(List<String> yearList) {
+		this.yearList = yearList;
+	}
+
+	public int getQueryYear() {
+		return queryYear;
+	}
+
+	public void setQueryYear(int queryYear) {
+		this.queryYear = queryYear;
+	}
+
+	public List<String> getQueryList() {
+		return queryList;
+	}
+
+	public void setQueryList(List<String> queryList) {
+		this.queryList = queryList;
+	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
 }

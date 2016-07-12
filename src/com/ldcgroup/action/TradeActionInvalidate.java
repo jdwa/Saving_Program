@@ -112,7 +112,7 @@ public class TradeActionInvalidate extends ActionSupport implements Preparable, 
 			trade = tradeBo.findByNo(trade.getTx_no());
 			this.tradeList.add(trade);
 			this.statementList.addAll(statementBo.list(trade));
-			this.session.put("S_Trade", trade);
+			this.session.put("S_TradeList", tradeList);
 			returnValue = SUCCESS;
 		} else {
 			addActionMessage(getText("action.trade.statements.zero"));
@@ -128,6 +128,7 @@ public class TradeActionInvalidate extends ActionSupport implements Preparable, 
 		if (trade != null) {
 			if (getTradeBo().findByNo(trade.getTx_no()) == null) {				
 				addActionError(this.getText("errors.data.not.exist") + trade.getTx_no());
+				this.session.put("S_TradeList", null);
 			}
 		}
 	}

@@ -16,6 +16,8 @@ public interface StatementBo {
 	public List<Statement> list(Member member);
 	public List<Statement> list(Trade trade);
 	public List<Statement> list(Trade trade, Type type);
+	public List<Statement> list(List<Trade> tradeList);
+	public List<Statement> list(List<Trade> tradeList, Type type);	
 	public List<Statement> list(Type type);
 	public double getStatementSum();
 	public double getStatementSum(Member member);

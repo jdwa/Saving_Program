@@ -78,11 +78,12 @@ public class Type003StatementGridAction extends ActionSupport implements Prepara
 	public String execute() {
 		String returnValue = ERROR;
 		
-		Trade trade = (Trade) this.session.get("S_Trade");
+		@SuppressWarnings("unchecked")
+		ArrayList<Trade> tradeList = (ArrayList<Trade>) this.session.get("S_TradeList");
 		Type type = (Type)typeBo.findByNo("003");
 
-		if (trade != null) { 
-			List<Statement> typeStatementList = this.statementBo.list(trade, type);
+		if (tradeList != null) { 
+			List<Statement> typeStatementList = this.statementBo.list(tradeList, type);
 	
 			// Check for search operation
 			if (getSearchField() != null) {

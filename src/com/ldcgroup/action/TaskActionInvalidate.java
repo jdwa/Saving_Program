@@ -127,6 +127,7 @@ public class TaskActionInvalidate extends ActionSupport implements Preparable, S
 		if (task != null) {
 			if (getTaskBo().findByNo(task.getTk_no()) == null) {				
 				addActionError(this.getText("errors.data.not.exist") + task.getTk_no());
+				this.session.put("S_Task", null);
 			}
 		}
 	}

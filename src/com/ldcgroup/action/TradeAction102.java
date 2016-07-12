@@ -296,7 +296,7 @@ public class TradeAction102 extends ActionSupport implements Preparable, Session
 			trade = tradeBo.findByNo(trade.getTx_no());
 			this.tradeList.add(trade);
 			this.statementList.addAll(statementBo.list(trade));
-			this.session.put("S_Trade", trade);
+			this.session.put("S_TradeList", tradeList);
 			returnValue = SUCCESS;
 		} else {
 			addActionMessage(getText("action.trade.statements.zero"));
@@ -312,6 +312,7 @@ public class TradeAction102 extends ActionSupport implements Preparable, Session
 		if (trade != null) {
 			if (getTradeBo().findByNo(trade.getTx_no()) != null){				
 				addActionError(this.getText("errors.duplicate") + trade.getTx_no());
+				this.session.put("S_TradeList", null);
 			}
 		}
 	}
