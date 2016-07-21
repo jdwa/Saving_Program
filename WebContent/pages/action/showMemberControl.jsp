@@ -115,8 +115,12 @@
 					<sj:div><a href="initializeStatement.action"><s:text name="statement.add" /></a></sj:div>
 					<sj:div><a href="listStatement.action"><s:text name="statement.list.all" /></a></sj:div>
 					<sj:div><a href="initializeTrade.action"><s:text name="trade.add" /></a></sj:div>
+				</security:authorize>	
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">	
 					<sj:div><a href="listTrade.action"><s:text name="trade.list.all" /></a></sj:div>
-					<br>
+				</security:authorize>
+				<security:authorize access="hasAnyRole('ROLE_ADMIN')">	
+					<br>	
 					<sj:div><a href="initializeItem.action"><s:text name="item.add" /></a></sj:div>
 					<sj:div><a href="listItem.action"><s:text name="item.list.all" /></a></sj:div>						
 					<sj:div><a href="initializePoint.action"><s:text name="point.add" /></a></sj:div>
