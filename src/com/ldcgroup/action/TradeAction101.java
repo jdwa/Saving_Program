@@ -182,9 +182,12 @@ public class TradeAction101 extends ActionSupport implements Preparable, Session
 		if (((endY - startY) > seniority) || (((endY - startY) == seniority) && ((endM - startM) >=0))) {
 			this.statementList = statementBo.list(this.member);
 			Iterator<Statement> i = this.statementList.iterator();
-			// 符合計畫年資條件			
+			// 符合計畫年資條件
 			while (i.hasNext()) {
 				Statement statement = (Statement) i.next();
+				// 結算日後的提撥資料不列入計算
+				if (statement.getSettlement_date().getTime() > trade.getSettlement_date().getTime()) continue;
+				
 				if ("001".equals(statement.getType().getType_no())) {
 					type001Sum += statement.getFund();
 				} else if ("002".equals(statement.getType().getType_no())) {

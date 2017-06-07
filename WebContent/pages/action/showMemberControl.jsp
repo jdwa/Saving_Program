@@ -112,11 +112,15 @@
 					<sj:div><a href="listCategory.action"><s:text name="category.list.all" /></a></sj:div>				
 					<sj:div><a href="initializeType.action"><s:text name="type.add" /></a></sj:div>
 					<sj:div><a href="listType.action"><s:text name="type.list.all" /></a></sj:div>
+				</security:authorize>		
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">
 					<sj:div><a href="initializeStatement.action"><s:text name="statement.add" /></a></sj:div>
+				</security:authorize>		
+				<security:authorize access="hasAnyRole('ROLE_ADMIN')">	
 					<sj:div><a href="listStatement.action"><s:text name="statement.list.all" /></a></sj:div>
+				</security:authorize>		
+				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">
 					<sj:div><a href="initializeTrade.action"><s:text name="trade.add" /></a></sj:div>
-				</security:authorize>	
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">	
 					<sj:div><a href="listTrade.action"><s:text name="trade.list.all" /></a></sj:div>
 				</security:authorize>
 				<security:authorize access="hasAnyRole('ROLE_ADMIN')">	

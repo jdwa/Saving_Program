@@ -20,10 +20,10 @@
 	<s:actionerror />
 	<s:actionmessage />
 	<s:form action="addStatement" method="post" namespace="/">
-		<s:select key="statement.trade.tx_no" list="tradeList" listKey="tx_no" listValue="tx_no" /> 
+		<sj:autocompleter key="statement.trade.tx_no" list="tradeList" listKey="tx_no" listValue="tx_no" />
 		<s:select key="statement.type.type_no" list="typeList" listKey="type_no" listValue="type_description" />
 		<s:select key="statement.company.cmp_no" list="companyList" listKey="cmp_no" listValue="cmp_description" /> 
-		<s:select key="statement.member.account" list="memberList" listKey="account" listValue="account" /> 
+		<sj:autocompleter key="statement.member.account" list="memberList" listKey="account" listValue="account" />
 		<s:textfield key="statement.fund" />
 		<s:textfield key="statement.remark" />
 		<sj:datepicker key="statement.settlement_date" value="%{settlement_date}" 
