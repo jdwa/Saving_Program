@@ -113,5 +113,8 @@
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("roll.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("roll.timestamp")}' sortable="true" />
     </sjg:grid>
+    
+	<iframe name="labor" id="labor" src="pages/action/laborStandard.jsp" frameborder="0" height="1100" width="800"> </iframe>
+		
 </body>
 </html>
