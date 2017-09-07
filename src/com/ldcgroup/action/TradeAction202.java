@@ -202,10 +202,12 @@ public class TradeAction202 extends ActionSupport implements Preparable, Session
 					calendar.setTime(statement.getSettlement_date());
 					int sYear = calendar.get(Calendar.YEAR);
 					if (sYear == this.appraisalYear) {
-						if ((statement.getFund() >= 0) && (statement.getTrade().getFund() != 0)) {	
-							type002Sum += statement.getFund();
-						} else {
-							type002WithdrawAlready += statement.getFund();
+						if (statement.getTrade().getFund() != 0) {
+							if (statement.getFund() >= 0) {
+								type002Sum += statement.getFund();
+							} else {
+								type002WithdrawAlready += statement.getFund();
+							}
 						}
 					}
 				}
