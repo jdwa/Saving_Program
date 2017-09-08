@@ -196,7 +196,8 @@ public class TradeAction201 extends ActionSupport implements Preparable, Session
 				calendar.setTime(statement.getSettlement_date());
 				int sYear = calendar.get(Calendar.YEAR);
 				if (sYear == this.appraisalYear) {
-					if (statement.getTrade().getFund() != 0) {
+					// 加總交易型態為『每月提撥"001"』的『公司提撥 "002"』
+					if (statement.getTrade().getFund() != 0 && statement.getTrade().getCategory().getCategory_no().equals("001")) {
 						if (statement.getFund() >= 0) {
 							type002Sum += statement.getFund();
 						} else {
