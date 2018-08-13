@@ -15,7 +15,7 @@
 <base href="<%=basePath%>">
 <s:head />
 <sj:head jqueryui="true" jquerytheme="cupertino"/>
-<title><s:text name="action.trade.102" /></title>
+<title><s:text name="action.trade.109" /></title>
 <script type="text/javascript">
 
 	idsOfSelectedRows = [];
@@ -171,9 +171,10 @@
     	<sjg:gridColumn name="creation_date" index="creation_date" title='%{getText("member.creation_date")}' sortable="true" />	
     </sjg:grid>
 
-	<s:form action="addTrade102" method="post" namespace="/">
+	<s:form action="addTrade109" method="post" namespace="/">
 		<s:hidden id="ids" name="ids" />
 		<s:textfield key="trade.tx_no" />
+		<s:textfield key="withdrawAmount" value="6000" readonly="true" />
 		<sj:datepicker key="trade.settlement_date" value="%{settlement_date}" 
 			displayFormat="yy-mm-dd" disabled="false" showOn="focus"
 			timepicker="false" timepickerShowSecond="true" timepickerFormat="HH:mm:ss" />		

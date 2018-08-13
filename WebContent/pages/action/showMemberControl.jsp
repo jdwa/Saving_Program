@@ -51,19 +51,22 @@
 					<sj:div><a href="initializeTrade002.action"><s:text name="action.trade.002" /></a></sj:div>
 					<sj:div><a href="initializeTrade003.action"><s:text name="action.trade.003" /></a></sj:div>	
 					<sj:div><a href="initializeTrade004.action"><s:text name="action.trade.004" /></a></sj:div>
+					
 					<sj:div><a href="initializeTrade101.action"><s:text name="action.trade.101" /></a></sj:div>
-				</security:authorize>
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">			
 					<sj:div><a href="initializeTrade102.action"><s:text name="action.trade.102" /></a></sj:div>
-				</security:authorize>	
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_HR')">	
+					
+					<sj:div><a href="initializeTrade108.action"><s:text name="action.trade.108" /></a></sj:div>
+					<sj:div><a href="initializeTrade109.action"><s:text name="action.trade.109" /></a></sj:div>
+					
 					<sj:div><a href="initializeTrade103.action"><s:text name="action.trade.103" /></a></sj:div>		
 					<sj:div><a href="initializeTrade104.action"><s:text name="action.trade.104" /></a></sj:div>
 					<sj:div><a href="initializeTrade105.action"><s:text name="action.trade.105" /></a></sj:div>
 					<sj:div><a href="initializeTrade106.action"><s:text name="action.trade.106" /></a></sj:div>
 					<sj:div><a href="initializeTrade107.action"><s:text name="action.trade.107" /></a></sj:div>
+					
 					<sj:div><a href="initializeTrade201.action"><s:text name="action.trade.201" /></a></sj:div>	
 					<sj:div><a href="initializeTrade202.action"><s:text name="action.trade.202" /></a></sj:div>
+					
 					<sj:div><a href="initializeInvalidateTrade.action"><s:text name="trade.action.invalidate" /></a></sj:div>
 					<sj:div><a href="initializeQueryTrade.action"><s:text name="trade.action.query" /></a></sj:div>
 					<sj:div><a href="initializeQueryMemberStatement.action"><s:text name="member.action.query.statement" /></a></sj:div>

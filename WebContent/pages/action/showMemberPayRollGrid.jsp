@@ -90,7 +90,7 @@
 		    	userDataOnFooter="true"
 		    	footerrow="true"
 		    	multiselect="false">  	    	
-		    	<sjg:gridColumn name="id" index="id" title='%{getText("pay.id")}' formatter="integer" sortable="true" hidden="true" />
+		    	<sjg:gridColumn name="id" index="id" title='%{getText("pay.id")}' sortable="true" hidden="true" />
 		    	<sjg:gridColumn name="roll.ro_no" index="roll.ro_no" title='%{getText("pay.roll.ro_no")}' sortable="true" />
 		    	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("pay.member.account")}' sortable="true" />
 		    	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("pay.company.cmp_description")}' sortable="true" />
@@ -103,7 +103,7 @@
 		    	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("pay.timestamp")}' sortable="true" />
 		    </sjg:grid>
     	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("roll.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("roll.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="ro_no" index="ro_no" title='%{getText("roll.ro_no")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("roll.company.cmp_description")}' sortable="true" />
     	<sjg:gridColumn name="subvalue" index="subvalue" title='%{getText("roll.subvalue")}' formatter="currency" sortable="true" />

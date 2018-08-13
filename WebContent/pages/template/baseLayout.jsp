@@ -28,7 +28,7 @@
                 </td>
             </tr>
             <tr>
-                <td width="240" valign="top" align="center">
+                <td width="280" valign="top" align="center">
                     <tiles:insertAttribute name="menu"/>
                 </td>
                 <td width="800" valign="top" align="center">

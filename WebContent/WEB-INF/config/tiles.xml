@@ -181,6 +181,14 @@
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/addTrade107.jsp"/>      
   </definition>
+  <definition name="pages.action.addTrade108.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade108.jsp"/>      
+  </definition>
+  <definition name="pages.action.addTrade109.tiles" extends="baseLayout">
+  	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
+      <put-attribute name="body" value="/pages/action/addTrade109.jsp"/>      
+  </definition>  
   <definition name="pages.action.addTrade201.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/addTrade201.jsp"/>      

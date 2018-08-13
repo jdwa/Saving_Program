@@ -1,0 +1,22 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="trade.tx_no">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="errors.required" />
+		</field-validator>
+	</field>
+	<field name="withdrawAmount">
+		<field-validator type="int">
+			<param name="min">6000</param>
+    		<param name="max">6000</param>
+			<message key="errors.range" />
+		</field-validator>
+	</field>
+	<field name="ids">
+		<field-validator type="requiredstring">
+		 	<param name="trim">true</param>
+			<message key="errors.no.data.selected" />
+		</field-validator>
+	</field>
+</validators>

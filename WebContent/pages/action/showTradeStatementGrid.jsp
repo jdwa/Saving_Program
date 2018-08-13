@@ -94,7 +94,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="trade.tx_no" index="trade.tx_no" title='%{getText("statement.trade.tx_no")}' sortable="true" />
     	<sjg:gridColumn name="trade.category.category_description" index="trade.category.category_description" title='%{getText("statement.trade.category.category_description")}' sortable="true" />    	
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("statement.member.account")}' sortable="true" />
@@ -133,7 +133,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="trade.tx_no" index="trade.tx_no" title='%{getText("statement.trade.tx_no")}' sortable="true" />
     	<sjg:gridColumn name="trade.category.category_description" index="trade.category.category_description" title='%{getText("statement.trade.category.category_description")}' sortable="true" />    	
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("statement.member.account")}' sortable="true" />
@@ -172,7 +172,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="trade.tx_no" index="trade.tx_no" title='%{getText("statement.trade.tx_no")}' sortable="true" />
     	<sjg:gridColumn name="trade.category.category_description" index="trade.category.category_description" title='%{getText("statement.trade.category.category_description")}' sortable="true" />    	
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("statement.member.account")}' sortable="true" />
@@ -211,7 +211,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="trade.tx_no" index="trade.tx_no" title='%{getText("statement.trade.tx_no")}' sortable="true" />
     	<sjg:gridColumn name="trade.category.category_description" index="trade.category.category_description" title='%{getText("statement.trade.category.category_description")}' sortable="true" />    	
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("statement.member.account")}' sortable="true" />
@@ -250,7 +250,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("statement.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="trade.tx_no" index="trade.tx_no" title='%{getText("statement.trade.tx_no")}' sortable="true" />
     	<sjg:gridColumn name="trade.category.category_description" index="trade.category.category_description" title='%{getText("statement.trade.category.category_description")}' sortable="true" />    	
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("statement.member.account")}' sortable="true" />

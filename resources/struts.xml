@@ -13,14 +13,74 @@
 				<result-type name="tiles"
 					class="org.apache.struts2.views.tiles.TilesResult" />
 			</result-types>
-			
+		
 			<interceptors>
 				<interceptor class="com.ldcgroup.interceptor.ActionInterceptor" name="actionInterceptor" />
 				<interceptor-stack name="actionStack">
-					<interceptor-ref name="defaultStack" />
+					<interceptor-ref name="timer" />
 					<interceptor-ref name="actionInterceptor" />
+					<interceptor-ref name="defaultStack" />
 				</interceptor-stack>
 			</interceptors>
+
+			<!--            
+            /***** struts-default.xml 2.3.14 paramsPrepareParamsStack *****/
+            <interceptor-stack name="paramsPrepareParamsStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+            
+			/***** struts-default.xml 2.3.14 defaultStack *****/
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="debugging"/>
+            </interceptor-stack>
+            -->
 	
 			<default-interceptor-ref name="actionStack" />
 
@@ -741,6 +801,24 @@
 				<result name="input" type="tiles">pages.action.addTrade107.tiles</result>
 				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
 			</action>
+			<action name="initializeTrade108" class="com.ldcgroup.action.TradeAction108"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade108.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade108.tiles</result>
+			</action>
+			<action name="addTrade108" class="com.ldcgroup.action.TradeAction108">
+				<result name="input" type="tiles">pages.action.addTrade108.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>
+			<action name="initializeTrade109" class="com.ldcgroup.action.TradeAction109"
+				method="initialize">
+				<result name="input" type="tiles">pages.action.addTrade109.tiles</result>
+				<result name="success" type="tiles">pages.action.addTrade109.tiles</result>
+			</action>
+			<action name="addTrade109" class="com.ldcgroup.action.TradeAction109">
+				<result name="input" type="tiles">pages.action.addTrade109.tiles</result>
+				<result name="success" type="tiles">pages.action.showTradeStatementGrid.tiles</result>
+			</action>					
 			<action name="initializeTrade201" class="com.ldcgroup.action.TradeAction201"
 				method="initialize">
 				<result name="input" type="tiles">pages.action.addTrade201.tiles</result>

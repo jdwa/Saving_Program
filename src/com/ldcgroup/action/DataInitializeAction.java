@@ -361,7 +361,6 @@ public class DataInitializeAction extends ActionSupport implements Preparable, S
 				categoryBo.add(category);			
 			}
 			
-			/*--
 			if (categoryBo.findByNo("102") == null) {
 				Category category = new Category();
 				category.setCategory_no("102");
@@ -371,7 +370,6 @@ public class DataInitializeAction extends ActionSupport implements Preparable, S
 				category.setCreation_date(now);
 				categoryBo.add(category);			
 			}
-			--*/
 
 			if (categoryBo.findByNo("103") == null) {
 				Category category = new Category();

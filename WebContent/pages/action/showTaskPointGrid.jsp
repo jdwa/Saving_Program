@@ -71,7 +71,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -108,7 +108,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -145,7 +145,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -182,7 +182,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -219,7 +219,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -256,7 +256,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -293,7 +293,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -330,7 +330,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
@@ -367,7 +367,7 @@
     	userDataOnFooter="true"
     	footerrow="true"
     	multiselect="false">  	    	
-    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' formatter="integer" sortable="true" hidden="true" />
+    	<sjg:gridColumn name="id" index="id" title='%{getText("point.id")}' sortable="true" hidden="true" />
     	<sjg:gridColumn name="task.tk_no" index="task.tk_no" title='%{getText("point.task.tk_no")}' sortable="true" />
     	<sjg:gridColumn name="member.account" index="member.account" title='%{getText("point.member.account")}' sortable="true" />
     	<sjg:gridColumn name="company.cmp_description" index="company.cmp_description" title='%{getText("point.company.cmp_description")}' sortable="true" />
