@@ -112,9 +112,9 @@
     	<sjg:gridColumn name="creation_date" index="creation_date" title='%{getText("roll.creation_date")}' formatter="date" formatoptions="{newformat : 'Y-m-d', srcformat : 'Y-m-d H:i:s'}" sortable="true" />
     	<sjg:gridColumn name="remark" index="remark" title='%{getText("roll.remark")}' sortable="true" />
     	<sjg:gridColumn name="timestamp" index="timestamp" title='%{getText("roll.timestamp")}' sortable="true" />
-    </sjg:grid>
+    </sjg:grid>   
     
-	<iframe name="labor" id="labor" src="pages/action/laborStandard.jsp" frameborder="0" height="1100" width="800"> </iframe>
+	<iframe name="description" id="description" src="pages/action/laborBenefitsDescriptions.jsp" frameborder="0" height="2000" width="800"> </iframe>
 		
 </body>
 </html>

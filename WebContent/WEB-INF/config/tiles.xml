@@ -94,7 +94,14 @@
   <definition name="pages.action.showMemberStatementGrid.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/showMemberStatementGrid.jsp"/>      
-  </definition> 
+  </definition>
+  <definition name="pages.action.showMemberStatementGridTiny.tiles" extends="baseLayout">
+  	  <put-attribute name="title" value="/pages/template/blank.jsp"/>
+      <put-attribute name="header" value="/pages/template/blank.jsp"/>
+      <put-attribute name="menu" value="/pages/template/blank.jsp"/>
+      <put-attribute name="body" value="/pages/action/showMemberStatementGrid.jsp"/>      
+      <put-attribute name="footer" value="/pages/template/blank.jsp"/>   
+  </definition>   
   <definition name="pages.action.showTradeStatementList.tiles" extends="baseLayout">
   	  <put-attribute name="menu" value="/pages/action/showMemberControl.jsp"/>      
       <put-attribute name="body" value="/pages/action/showTradeStatementList.jsp"/>      

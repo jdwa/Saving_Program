@@ -101,8 +101,8 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 
 		if (memberNormalList != null) {
 			List<Member> statementMembers = new ArrayList<Member>();
-			Date startDate = new Date();
 			for (int i = 0; i < memberNormalList.size(); i++) {
+				Date startDate = new Date();
 				Member sm = memberNormalList.get(i);
 				
 				// 設定員工加入年資為『定期提領』資格之年資預設值。
@@ -120,9 +120,12 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 						Statement s = this.statementList.get(j);
 						if (s.getMember().getId() == sm.getId()) {
 							amount += s.getFund();
-							
 							if (s.getSettlement_date().getTime() < startDate.getTime()) {
 								startDate = s.getSettlement_date();
+								accumulation = ((double)(now.getTime() - startDate.getTime()) / (double)(86400000) / (double)(365));
+								if ((sm.getAccumulation() == null) || (accumulation < sm.getAccumulation().doubleValue())) {
+									sm.setAccumulation(accumulation);
+								}
 							}
 							// 計算符合資格之定期提領年資。以最近一次提領為計算年資之起始時間。
 							if ("101".equals(s.getTrade().getCategory().getCategory_no())
@@ -130,7 +133,7 @@ public class MemberSeniorityGridAction extends ActionSupport implements Preparab
 								|| "104".equals(s.getTrade().getCategory().getCategory_no())
 								|| "105".equals(s.getTrade().getCategory().getCategory_no())
 								|| "106".equals(s.getTrade().getCategory().getCategory_no())
-								|| "107".equals(s.getTrade().getCategory().getCategory_no())) {
+								|| "107".equals(s.getTrade().getCategory().getCategory_no())) {							
 								accumulation = ((double)(now.getTime() - s.getTrade().getSettlement_date().getTime()) / (double)(86400000) / (double)(365));
 								if ((sm.getAccumulation() == null) || (accumulation < sm.getAccumulation().doubleValue())) {
 									sm.setAccumulation(accumulation);

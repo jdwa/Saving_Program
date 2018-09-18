@@ -460,6 +460,9 @@
 			<action name="listMemberStatementGrid" class="com.ldcgroup.action.MemberStatementGridAction">
 				<result name="success" type="tiles">pages.action.showMemberStatementGrid.tiles</result>
 			</action>
+			<action name="listMemberStatementGridTiny" class="com.ldcgroup.action.MemberStatementGridAction">
+				<result name="success" type="tiles">pages.action.showMemberStatementGridTiny.tiles</result>
+			</action>			
 			<action name="gridMemberStatement" class="com.ldcgroup.action.MemberStatementGridAction">
 				<result name="success" type="json">
 					<param name="includeProperties">
