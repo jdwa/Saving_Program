@@ -182,11 +182,12 @@ public class TradeAction202 extends ActionSupport implements Preparable, Session
 		double type002WithdrawAmount = 0; // 公司提撥 "002"
 		this.company = getCompanyBo().findByNo(this.company.getCmp_no());
 		List<Statement> statements = new ArrayList<Statement>();
-		List<Member> memberList = getMemberBo().listNormal(this.company);
+		// List<Member> memberList = getMemberBo().listNormal(this.company);
+		List<Member> memberList = getMemberBo().listNormalHistory(this.company);
 		for (int idx = 0; idx < memberList.size(); idx++) {
 			// 考核所有分公司員工帳號	
 			Member member = (Member) memberList.get(idx);
-
+			
 			// double type001Sum = 0 , type001Withdraw = 0; // 員工提撥 "001"
 			double type002Sum = 0 , type002Withdraw = 0 , type002WithdrawAlready = 0; // 公司提撥 "002"
 			// double type003Sum = 0 , type003Withdraw = 0; // 紅利分配 "003"
@@ -201,7 +202,7 @@ public class TradeAction202 extends ActionSupport implements Preparable, Session
 					Calendar calendar = Calendar.getInstance();
 					calendar.setTime(statement.getSettlement_date());
 					int sYear = calendar.get(Calendar.YEAR);
-					if (sYear == this.appraisalYear) {
+					if ((sYear == this.appraisalYear) && (statement.getCompany().getCmp_no() == this.company.getCmp_no())) {						
 						// 加總交易型態為『每月提撥"001"』的『公司提撥 "002"』
 						if (statement.getTrade().getFund() != 0 && statement.getTrade().getCategory().getCategory_no().equals("001")) {	
 							if (statement.getFund() >= 0) {

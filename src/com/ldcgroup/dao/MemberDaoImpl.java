@@ -1,7 +1,13 @@
 package com.ldcgroup.dao;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,6 +113,28 @@ public class MemberDaoImpl extends HibernateDaoSupport implements MemberDao {
 	@Transactional(readOnly = true)
 	public List<Member> listNormal(Company company) {
 		return (List<Member>) getHibernateTemplate().find("from Member e where e.role.role_code = ? and e.company = ?", Definition.ROLE_NORMAL, company);
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	@Transactional(readOnly = true)
+	public List<Member> listNormalHistory(Company company) {
+		
+		final String queryString = "select distinct Member from Statement where company = '" + company.getId() + "'";
+		List<Object> list = (List<Object>) getHibernateTemplate().execute(new HibernateCallback<Object>() {
+			public Object doInHibernate(Session session)
+					throws HibernateException {
+				Query query = session.createSQLQuery(queryString);
+				return query.list();
+			}
+		});
+		
+		List<Member> memberList = new ArrayList<Member>();
+		for (int i = 0; i < list.size(); i++) {
+			memberList.add(findById(((BigDecimal)list.get(i)).longValue()));
+		}
+
+		return memberList;
 	}
 
 	@Override

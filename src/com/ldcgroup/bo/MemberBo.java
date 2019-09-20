@@ -25,6 +25,7 @@ public interface MemberBo extends UserDetailsService, AuthenticationProvider {
 	public List<Member> listReturn();
 	public List<Member> list(Company company);
 	public List<Member> listNormal(Company company);
+	public List<Member> listNormalHistory(Company company);
 	public List<Member> listResign(Company company);
 	public List<Member> listRetire(Company company);
 	public List<Member> listRemain(Company company);

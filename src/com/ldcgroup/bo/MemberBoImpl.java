@@ -94,6 +94,11 @@ public class MemberBoImpl implements MemberBo, UserDetailsService, Authenticatio
 	}
 
 	@Override
+	public List<Member> listNormalHistory(Company company) {
+		return memberDao.listNormalHistory(company);
+	}
+	
+	@Override
 	public List<Member> listResign(Company company) {
 		return memberDao.listResign(company);
 	}
